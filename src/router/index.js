@@ -7,7 +7,8 @@ import HomeLayout from "@/components/HomeLayout.vue";
 import Buy from "@/views/Buy.vue";
 import Fluxo from "@/views/Fluxo.vue";
 import EsperaComprador from "@/views/EsperaComprador.vue";
-import EsperaVendedor from "@/views/EsperaVendedor.vue";
+import HorarioVendedor from "@/views/HorarioVendedor.vue";
+import PendenciaVendedor from "@/views/PendenciaVendedor.vue";
 
 Vue.use(VueRouter);
 
@@ -18,9 +19,9 @@ const routes = [
     component: Fluxo
   },
   {
-    path: "/esperavendedor",
-    name: "EsperaVendedor",
-    component: EsperaVendedor
+    path: "/horariovendedor/:id",
+    name: "HorarioVendedor",
+    component: HorarioVendedor
   },
   {
     path: "/login",
@@ -39,6 +40,11 @@ const routes = [
     ],
   },
   {
+    path: "/pendenciavendedor",
+    name: "PendenciaVendedor",
+    component: PendenciaVendedor
+  },
+  {
     path: "/home",
     component: HomeLayout,
     children: [
@@ -51,7 +57,8 @@ const routes = [
         path: "esperacomprador/:id",
         name: "EsperaComprador",
         component: EsperaComprador
-      }
+      },
+
     ],
   },
 ];

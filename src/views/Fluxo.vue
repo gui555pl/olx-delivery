@@ -4,7 +4,7 @@ div(style='height: 100%; position: relative;')
     v-container
       v-row(dense="" style="text-align:center;")
         v-col(style="text-align:center;")
-            h3() Escolha um fluxo para teste
+            h3() Escolha um fluxo para testar a jornada de cada usuário
         v-col(cols="12" style="margin-top:20px;"  )
           v-card(color="#6E0AD6", dark="" style="height:150px; " @click="")
             v-card-title.headline

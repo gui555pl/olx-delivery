@@ -72,7 +72,7 @@
           h3 R$ 152,52
     v-row#confirm-section
       v-col(cols='12')
-        v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important') Confirmar pagamento
+        v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important' @click="comprar()") Confirmar pagamento
       v-col(cols='12' align-self='center' style='color: #46a246; text-align: center;')
           v-icon(color='#46a246') mdi-lock-outline
           div(style='display: inline-block; line-height: 0.8') Compra segura
@@ -90,6 +90,14 @@ export default {
       return {
           produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
       }
+  },
+  methods:{
+    comprar(){
+      this.$fires.produto.update({
+        status:'aguardando_vendedor'
+      })
+      this.$router.push('/home/esperacomprador/'+ this.$route.params.id);
+    }
   }
 }
 </script>
