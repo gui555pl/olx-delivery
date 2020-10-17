@@ -5,63 +5,87 @@
         h2.text-center(style='font-weight: 500;') Escolha uma opção
     v-row#days-section(justify='center')
       v-col.px-2(v-for='(day, i) in days' cols='auto')
-        v-card(@click='day.active = !day.active' :class='day.active ? "orange-outlined" : ""' outlined min-width='66px')
+        v-card(@click='window = i' :class='window === i ? "orange-outlined" : ""' outlined min-width='66px')
+          v-badge(v-if='daysSelected[i].selected.length' bordered icon='mdi-check' overlap color='green' style='position: absolute; right: 9px; top: 9px;')
           v-row(justify='center')
-            v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400' :style='day.active ? { color: "orange" } : {}') {{ day.name }}
+            v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400' :style='window === i ? { color: "orange" } : {}') {{ day.name }}
           v-row(justify='center')
             v-col.font-weight-bold.pt-1(cols='auto' style='font-weight: 400')
               h3 {{ day.date }}
-    //- v-row#product-section
-    //-   v-col.section-title.pb-0(cols='12') Produto
-    //-   v-col(cols='3')
-    //-     v-img(contain :src='produto.img')
-    //-   v-col.pl-0(cols='6')
-    //-     v-col.section-subtitle.pa-0(cols='12') {{ produto.descricao }}
-    //-     v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important;') Vendido por: Maria Luiza da Silva
-    //-   v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R${{ produto.preço }},00
-    //- v-row
-    //-   v-divider
+    v-row#hours-section(no-gutters)
+      v-col.section-title.pb-0(cols='12') Agendamento
+      v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400; color: red;') Selecione no mínimo 4 horários por dia
+      v-row(no-gutters)
+        v-col(cols='12')
+          v-window.elevation-0(v-model='window')
+            v-window-item(v-for='n in days.length' :key='n')
+              v-row(v-for='i in 24' :key='i' no-gutters justify='space-between' style='width: 100%;')
+                v-col.section-subtitle.pb-1(cols='auto' align-self='center' style='font-weight: 400') {{ i - 1 }}:00 - {{ i }}:00
+                v-col.section-subtitle.pb-1(cols='auto' align-self='center' style='font-weight: 400')
+                  v-checkbox(v-model='daysSelected[n-1].selected' color='orange' style='margin-top: 0;' hide-details :value='i-1')
+    v-row.mt-3
+      v-divider
+    v-row#confirm-section
+      v-col(cols='12')
+        v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important' @click="") Confirmar
 </template>
 
 <script>
 export default {
   data () {
     return {
-      days: [
-        {
-          active: true,
-          name: 'Seg',
-          date: 19
-        },
-        {
-          active: false,
-          name: 'Ter',
-          date: 20
-        },
-        {
-          active: true,
-          name: 'Seg',
-          date: 19
-        },
-        {
-          active: false,
-          name: 'Ter',
-          date: 20
-        },
-        {
-          active: true,
-          name: 'Seg',
-          date: 19
-        },
-        {
-          active: false,
-          name: 'Ter',
-          date: 20
-        }
-      ]
+      days: [],
+      daysSelected: [
+        { selected: [] },
+        { selected: [] }
+      ],
+      window: 0
+    }
+  },
+  methods: {
+    numberToWeek (number) {
+      switch (number) {
+        case 0:
+          return 'Dom'
+        case 1:
+          return 'Seg'
+        case 2:
+          return 'Ter'
+        case 3:
+          return 'Qua'
+        case 4:
+          return 'Qui'
+        case 5:
+          return 'Sex'
+        case 6:
+          return 'Sáb'
+      }
     }
   },
   mounted () {
+    const currentDate = new Date(Date.now())
+    const currentDate2 = new Date()
+    let tomorrow = new Date(currentDate2)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    const day = currentDate.getDay()
+    const date = currentDate.getDate()
+    const day2 = tomorrow.getDay()
+    const date2 = tomorrow.getDate()
+    console.log(date,day)
+    console.log(day2, date2)
+    console.log(this.daysSelected[0].selected)
+    this.days = [
+      {
+        active: false,
+        name: 'Hoje',
+        date: date
+      },
+      {
+        active: false,
+        name: this.numberToWeek(day2),
+        date: date2
+      }
+    ]
   }
 }
 </script>
