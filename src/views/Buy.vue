@@ -134,7 +134,7 @@ export default {
       this.$fires.produto.update({
         status:'aguardando_vendedor'
       })
-      this.$router.push('/buying/esperacomprador/'+ this.$route.params.id);
+      this.$router.push('/buying/agendamento/'+ this.$route.params.id);
     }
   }
 }
