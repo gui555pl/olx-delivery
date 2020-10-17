@@ -5,7 +5,8 @@ import Home from "@/views/Home.vue";
 import BaseLayout from "@/components/BaseLayout.vue";
 import Buy from "@/views/Buy.vue";
 import Fluxo from "@/views/Fluxo.vue";
-import EsperandoVendedor from "@/views/EsperandoVendedor.vue";
+import EsperaComprador from "@/views/EsperaComprador.vue";
+import EsperaVendedor from "@/views/EsperaVendedor.vue";
 
 Vue.use(VueRouter);
 
@@ -19,9 +20,17 @@ const routes = [
     },
   },
   {
-    path: "/esperandoVendedor",
-    name: "EsperandoVendedor",
-    component: EsperandoVendedor,
+    path: "/esperacomprador/:id",
+    name: "EsperaComprador",
+    component: EsperaComprador,
+    meta: {
+      hasToolbar: false,
+    },
+  },
+  {
+    path: "/esperavendedor/:id",
+    name: "EsperaVendedor",
+    component: EsperaVendedor,
     meta: {
       hasToolbar: false,
     },
