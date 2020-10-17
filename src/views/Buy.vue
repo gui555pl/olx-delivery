@@ -33,7 +33,8 @@
       v-row(style='width: 100%;')
         v-col(cols='auto')
           v-avatar(:color='delivery.color + "30"' size='36')
-            v-icon(small :color='delivery.color') {{ delivery.icon }}
+            v-icon(v-if='delivery.icon' small :color='delivery.color') {{ delivery.icon }}
+            img(v-else :src='delivery.img' style='height: auto; width: 90%;')
         v-col.pl-0
           v-col.section-subtitle.pa-0(cols='12') {{ delivery.type === 'olx-delivery' ? 'OLX Delivery' : 'Expressa' }}
           v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;')  Em até {{ delivery.hours ? delivery.time + " horas" : delivery.time + " dias úteis" }}
@@ -88,7 +89,8 @@
             v-row.px-3
               v-col(cols='auto')
                 v-avatar(:color='item.color + "30"' size='36')
-                  v-icon(small :color='item.color') {{ item.icon }}
+                  v-icon(v-if='item.icon' small :color='item.color') {{ item.icon }}
+                  img(v-else :src='item.img' style='height: auto; width: 90%;')
               v-col.pl-0
                 v-col.section-subtitle.pa-0(cols='12') {{ item.type === 'olx-delivery' ? 'OLX Delivery' : 'Expressa' }}
                 v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Em até {{ item.hours ? item.time + " horas" : item.time + " dias úteis" }}
@@ -117,7 +119,7 @@ export default {
             {
               type: 'olx-delivery',
               price: 13.00,
-              icon: 'mdi-menu',
+              img: require('../imagens/olx-delivery.png'),
               color: '#ffa500',
               time: 48,
               hours: true
