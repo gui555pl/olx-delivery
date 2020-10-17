@@ -28,6 +28,7 @@ export default {
       name: "",
       email: "",
       produtos: this.$fiery(firebase.firestore().collection("produtos")),
+      users: this.$fiery(firebase.firestore().collection("users"))
     };
   },
   methods: {
@@ -69,6 +70,13 @@ export default {
         produto.vendedor_email =  'usuarioAleatorio'
         produto.vendedor_name = 'Usuário Aleatório'
         this.$fires.produtos.add(produto)
+        
+        const user = {
+          name: this.name,
+          email: this.email,
+          saldo: 0
+        }
+        this.$fires.users.doc(this.email).set(user)
         this.email = ''
         this.name = ''
         this.$router.push('/fluxo')
