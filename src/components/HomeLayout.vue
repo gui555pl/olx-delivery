@@ -8,7 +8,7 @@
         v-icon mdi-magnify
       v-btn(icon)
         v-icon mdi-heart-outline
-    v-main(style='background: #fafafa; min-height: 100vh;')
+    v-main(style='background: #f0f0f0; min-height: 100vh;')
       zoom-center-transition(:duration="200" mode="out-in")
         router-view
 </template>
