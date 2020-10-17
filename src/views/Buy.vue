@@ -6,11 +6,11 @@
     v-row#product-section
       v-col.section-title.pb-0(cols='12') Produto
       v-col(cols='3')
-        v-img(contain src='https://super.abril.com.br/wp-content/uploads/2018/05/filhotes-de-cachorro-alcanc3a7am-o-c3a1pice-de-fofura-com-8-semanas1.png')
+        v-img(contain :src='produto.img')
       v-col.pl-0(cols='6')
-        v-col.section-subtitle.pa-0(cols='12') Cachorro Usado
+        v-col.section-subtitle.pa-0(cols='12') {{ produto.descricao }}
         v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important;') Vendido por: Maria Luiza da Silva
-      v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R$84,00
+      v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R${{ produto.preço }},00
     v-row
       v-divider
     v-row#delivery-section(no-gutters)
@@ -29,14 +29,15 @@
       v-row.pt-2.pb-0(justify='space-between')
         v-col.pb-0.section-title(cols='auto')
           | Opções de Entrega
-        v-col.pb-0.text-right.caption(style='color: #6E0AD6') alterar
+        v-col.pb-0.text-right.caption(@click='sheet = true' style='color: #6E0AD6') alterar
       v-row(style='width: 100%;')
         v-col(cols='auto')
-          v-avatar(color='#00800030' size='36')
-            v-icon(small color='#008000') mdi-rocket-launch-outline
+          v-avatar(:color='delivery.color + "30"' size='36')
+            v-icon(small :color='delivery.color') {{ delivery.icon }}
         v-col.pl-0
-          v-col.section-subtitle.pa-0(cols='12') Expressa
-          v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Várzea, Recife - PE
+          v-col.section-subtitle.pa-0(cols='12') {{ delivery.type === 'olx-delivery' ? 'OLX Delivery' : 'Expressa' }}
+          v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;')  Em até {{ delivery.hours ? delivery.time + " horas" : delivery.time + " dias úteis" }}
+        v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R${{ delivery.price.toFixed(2).replace('.', ',') }}
     v-row
       v-divider
     v-row#payment-section(no-gutters)
@@ -58,18 +59,18 @@
           | Resumo
       v-row(justify='space-between' style='width: 100%;')
         v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400') Produto
-        v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400') R$ 130,00
-      v-row(justify='space-between' style='width: 100%;')  
+        v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400') R${{ produto.preço }},00
+      v-row(justify='space-between' style='width: 100%;')
         v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') Entrega expressa
-        v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') R$ 12,52
+        v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') R$ {{ delivery.price.toFixed(2).replace('.', ',') }}
       v-row(justify='space-between' style='width: 100%;')  
         v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') Pagamento à vista
-        v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') 1x R$ 152,52
+        v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') 1x R${{ (produto.preço + delivery.price).toFixed(2).replace('.', ',') }}
       v-row(justify='space-between' style='width: 100%;')  
         v-col.font-weight-bold.py-1(cols='auto' style='font-weight: 400')
           h3 Total a pagar
         v-col.font-weight-bold.py-1(cols='auto' style='font-weight: 400')
-          h3 R$ 152,52
+          h3 R$ {{ (produto.preço + delivery.price).toFixed(2).replace('.', ',') }}
     v-row#confirm-section
       v-col(cols='12')
         v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important' @click="comprar()") Confirmar pagamento
@@ -80,6 +81,18 @@
           div.caption(style='display: inline-block;') Ao confirmar o pagamento, você declara que está concordando com os 
             span(style='color: #6E0AD6') Termos e Condições de Usado
             | da OLX Pay e Compra segura
+    v-bottom-sheet(v-model='sheet')
+      v-sheet
+        v-row(v-for='(item, i) in deliveryItems' :key='i' no-gutters)
+          div(v-ripple @click='delivery = item; sheet = false' style='width: 100%;')
+            v-row.px-3
+              v-col(cols='auto')
+                v-avatar(:color='item.color + "30"' size='36')
+                  v-icon(small :color='item.color') {{ item.icon }}
+              v-col.pl-0
+                v-col.section-subtitle.pa-0(cols='12') {{ item.type === 'olx-delivery' ? 'OLX Delivery' : 'Expressa' }}
+                v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Em até {{ item.hours ? item.time + " horas" : item.time + " dias úteis" }}
+              v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R${{ item.price.toFixed(2).replace('.', ',') }}   
 </template>
 
 <script>
@@ -88,7 +101,32 @@ export default {
   fiery: true,
   data () {
       return {
-          produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
+          produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id)),
+          sheet: false,
+          deliveryItems: [
+            {
+              type: 'express',
+              price: 15.52,
+              icon: 'mdi-rocket-launch-outline',
+              color: '#008000',
+              time: 4
+            },
+            {
+              type: 'olx-delivery',
+              price: 13.00,
+              icon: 'mdi-menu',
+              color: '#ffa500',
+              time: 48,
+              hours: true
+            },
+          ],
+          delivery: {
+            type: 'express',
+            price: 15.52,
+            icon: 'mdi-rocket-launch-outline',
+            color: '#008000',
+            time: 4
+          }
       }
   },
   methods:{
@@ -96,7 +134,7 @@ export default {
       this.$fires.produto.update({
         status:'aguardando_vendedor'
       })
-      this.$router.push('/home/esperacomprador/'+ this.$route.params.id);
+      this.$router.push('/buying/agendamento/'+ this.$route.params.id);
     }
   }
 }

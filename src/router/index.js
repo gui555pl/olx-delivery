@@ -10,6 +10,7 @@ import EsperaComprador from "@/views/EsperaComprador.vue";
 import HorarioVendedor from "@/views/HorarioVendedor.vue";
 import PendenciaVendedor from "@/views/PendenciaVendedor.vue";
 import Trajeto from "@/views/Trajeto.vue";
+import Agendamento from '@/views/Agendamento.vue';
 
 Vue.use(VueRouter);
 
@@ -42,7 +43,25 @@ const routes = [
         path: "item/:id",
         name: "Comprar",
         components: { default: Buy },
+        meta: {
+          baseText: "Por favor, confirme os dados seguintes para finalizar sua compra",
+          baseIcon: "mdi-file-document-outline"
+        }
       },
+      {
+        path: "esperacomprador/:id",
+        name: "EsperaComprador",
+        component: EsperaComprador
+      },
+      {
+        path: "agendamento/:id",
+        name: "Agendamento",
+        component: Agendamento,
+        meta: {
+          baseText: "Marque seu agendamento",
+          baseIcon: "mdi-clock-outline"
+        }
+      }
     ],
   },
   {
@@ -53,18 +72,13 @@ const routes = [
   {
     path: "/home",
     component: HomeLayout,
+    redirect: "/home/items",
     children: [
       {
         path: "items",
         name: "Home",
         components: { default: Home },
-      },
-      {
-        path: "esperacomprador/:id",
-        name: "EsperaComprador",
-        component: EsperaComprador
-      },
-
+      }
     ],
   },
 ];

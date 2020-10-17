@@ -1,10 +1,8 @@
 <template lang='pug'>
-    div
-        BaseLayoutVue( :text="texto" :icon="icone")
-        v-col(style="text-align:center;" )
-            v-row(style="margin-top:10%; justify-content:center;" v-if="produto.status == 'aguardando_vendedor'")
-                img(src="../imagens/relaxing.jpg" height="200px;" )
-                h3(style="font-size:25px; color:#565656#; margin-top:20px; width:70%; ") Relaxa! Em breve você receberá seu horário de   entrega
+    v-col(style="text-align:center;" )
+        v-row(style="margin-top:10%; justify-content:center;" v-if="produto.status == 'aguardando_vendedor'")
+            img(src="../imagens/relaxing.jpg" height="200px;" )
+            h3(style="font-size:25px; color:#565656#; margin-top:20px; width:70%; ") Relaxa! Em breve você receberá seu horário de   entrega
 </template>
 
 <script>
