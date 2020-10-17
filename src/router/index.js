@@ -37,6 +37,11 @@ const routes = [
         name: "Comprar",
         components: { default: Buy },
       },
+      {
+        path: "esperacomprador/:id",
+        name: "EsperaComprador",
+        component: EsperaComprador
+      }
     ],
   },
   {
@@ -47,18 +52,13 @@ const routes = [
   {
     path: "/home",
     component: HomeLayout,
+    redirect: "/home/items",
     children: [
       {
         path: "items",
         name: "Home",
         components: { default: Home },
-      },
-      {
-        path: "esperacomprador/:id",
-        name: "EsperaComprador",
-        component: EsperaComprador
-      },
-
+      }
     ],
   },
 ];

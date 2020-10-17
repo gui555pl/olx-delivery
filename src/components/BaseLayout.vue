@@ -1,6 +1,6 @@
 <template lang='pug'>
   span#base-layout
-    v-app-bar(app color="#6E0AD6" prominent flat shrink-on-scroll dark)
+    v-app-bar(app color="#6E0AD6" style='transition: 0.04s;' prominent flat shrink-on-scroll dark)
       v-btn(icon style='position: absolute; left: 0; top: 0; margin: 4px 0 0 4px;')
         v-icon(@click='$router.go(-1)') mdi-arrow-left
       div(:style='{ color: "rgba(255, 255, 255," + textOpacity + ")" }' style='align-self: center !important; margin: auto; font-size: 80%; font-weight: 600; padding: 8px 0 0 0; text-align: center; margin-bottom: 24px;') {{ text }} 
