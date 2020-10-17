@@ -37,6 +37,10 @@ const routes = [
         path: "item/:id",
         name: "Comprar",
         components: { default: Buy },
+        meta: {
+          baseText: "Por favor, confirme os dados seguintes para finalizar sua compra",
+          baseIcon: "mdi-file-document-outline"
+        }
       },
       {
         path: "esperacomprador/:id",
@@ -46,7 +50,11 @@ const routes = [
       {
         path: "agendamento/:id",
         name: "Agendamento",
-        component: Agendamento
+        component: Agendamento,
+        meta: {
+          baseText: "Marque seu agendamento",
+          baseIcon: "mdi-clock-outline"
+        }
       }
     ],
   },
