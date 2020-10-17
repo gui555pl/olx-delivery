@@ -31,7 +31,7 @@ export default {
   },
   data () {
     return {
-      heightPercentage: 100,
+      heightPercentage: 100, 
       textOpacity: 100,
     }
   },
