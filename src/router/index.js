@@ -9,6 +9,7 @@ import Fluxo from "@/views/Fluxo.vue";
 import EsperaComprador from "@/views/EsperaComprador.vue";
 import HorarioVendedor from "@/views/HorarioVendedor.vue";
 import PendenciaVendedor from "@/views/PendenciaVendedor.vue";
+import Trajeto from "@/views/Trajeto.vue";
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,11 @@ const routes = [
     path: "/",
     name: "Início",
     component: Fluxo
+  },
+  {
+    path: "/trajeto",
+    name: "Trajeto",
+    component: Trajeto
   },
   {
     path: "/horariovendedor/:id",
