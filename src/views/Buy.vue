@@ -1,5 +1,5 @@
 <template lang='pug'>
-  v-container(style='height: 1500px;')
+  v-container
     v-row
       v-col.mt-3
         h2.text-center(style='font-weight: 500;') Confirme sua compra
