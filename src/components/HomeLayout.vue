@@ -9,8 +9,7 @@
       v-btn(icon)
         v-icon mdi-heart-outline
     v-main(style='background: #f0f0f0; min-height: 100vh;')
-      zoom-center-transition(:duration="200" mode="out-in")
-        router-view
+      router-view
 </template>
 
 <script>

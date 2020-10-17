@@ -1,33 +1,34 @@
 <template lang='pug'>
     div
-        BaseLayoutVue(:text="texto", :icon="icone")
-        v-card(style="margin-top:20%;" flat)
-            v-col(cols="12" style="margin-top:10%; ")
+        v-card(style="" flat)
+            v-col(cols="12" style="")
                 v-row(style="justify:space-around;")
                     v-col
-                        h4 Informe o destino 
+                        h4 Destino 
                     v-col 
                         h4(style="text-align:end; ") Horário de ida
                 v-row
-                    vue-google-autocomplete#map(style="margin-left:10px;"
-                        placeholder="Informe um endereço...",
-                        v-on:placechanged="IDA"
-                    ) 
-                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioIda" style="margin-left:15%;text-align:end;" required='')
+                    v-col(cols='6')
+                        vue-google-autocomplete#map(style=""
+                            placeholder="Informe um endereço...",
+                            v-on:placechanged="IDA"
+                        ) 
+                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioIda" style="margin-left:5%;text-align:end;" required='')
 
             v-col(cols="12")
                 v-row(style="justify:space-around;")
                     v-col
-                        h4 Informe a origem 
+                        h4 Origem 
                     v-col 
                         h4(style="text-align:end; ") Horário de volta
                 v-row
-                    vue-google-autocomplete#map2(style="margin-left:10px;"
-                    placeholder="Informe um endereço...",
-                    v-on:placechanged="VOLTA"
-                    ) 
-                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioVolta" style="margin-left:15%; text-align:end;" required='')
-        v-row#confirm-section(justify="center" style="margin-top:40%;")
+                    v-col(cols='6')
+                        vue-google-autocomplete#map2(style=""
+                        placeholder="Informe um endereço...",
+                        v-on:placechanged="VOLTA"
+                        ) 
+                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioVolta" style="margin-left:5%; text-align:end;" required='')
+        v-row#confirm-section(justify="center" align="end" style="margin-top:10%;" no-gutters)
             v-col(cols='8' )
                 v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="programar()") Programar</template>
 
@@ -47,7 +48,8 @@ export default {
       volta: "",
       horarioIda:"",
       horarioVolta:"",
-      endereço: this.$fiery(firebase.firestore().collection("endereço").doc(this.$route.params.id))
+      users: this.$fiery(firebase.firestore().collection("users")),
+      userLogged: this.$fiery(firebase.firestore().collection("users").where("email","==",this.$store.getters.user.email))
     };
   },
   components: {
@@ -55,6 +57,9 @@ export default {
     VueGoogleAutocomplete,
   },
   computed: {},
+  created(){
+    console.log(this.$store.getters.user.email)
+  },
   methods: {
     IDA(addressData, placeResultData, id) {
       this.ida = addressData;
@@ -64,11 +69,23 @@ export default {
       this.volta = addressData2;
       console.log(this.volta);
     },
-    adicionarEndereço(){
-        this.$fires.endereço.add({
-            endereçoIda: this.ida,
+    programar(){
+        let id = this.userLogged[0][".uid"].split("/")[4];
+        console.log('id',id);
+        this.$fires.users.doc(id).update({
+            enderecoIda:{
+                paisIda: this.ida.country || "Não disponível",
+                idaLatitude: this.ida.latitude || "Não disponível",
+                idaLocality: this.ida.locality  || "Não disponível",
+                idaLongitude: this.ida.longitude || "Não disponível"},
+
+            enderecoVolta:{
+                paisVolta: this.volta.country || "Não disponível",
+                voltaLatitude: this.volta.latitude || "Não disponível",
+                voltaLocality: this.volta.locality || "Não disponível",
+                voltaLongitude: this.volta.longitude || "Não disponível",
+            },
             horarioIda: this.horarioIda,
-            endereçoVolta:this.volta,
             horarioVolta:this.horarioVolta
         })
 
