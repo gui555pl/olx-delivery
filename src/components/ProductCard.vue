@@ -1,5 +1,5 @@
 <template lang='pug'>
-v-card(flat, v-ripple, @click="go()")
+v-card(style='box-shadow: 1px 1px 1px rgba(0,0,0,0.10);' v-ripple, @click="go()")
   v-row
     v-col(cols="3")
       v-img(contain, aspect-ratio="1", :src="product.img")
@@ -8,7 +8,11 @@ v-card(flat, v-ripple, @click="go()")
         v-col(cols="12")
           span.section-subtitle.pb-1(style="font-weight: 400") {{ product.descricao }}
         v-col(cols="12")
-          span.body-2.font-weight-medium R${{ product.preço }}
+          v-row(no-gutters)
+            v-col.body-2.font-weight-medium(align-self='center') R${{ product.preço }}
+            v-col.pa-0
+              img(height='20' src='../imagens/olxpay.jpeg')
+              img(height='20' src='../imagens/entrega.jpeg')
         v-col(cols="12")
           .grey--text.body-2.font-weight-light.pa-0(
             style="font-size: 0.7rem !important;"
