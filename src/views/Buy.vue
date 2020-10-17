@@ -19,7 +19,7 @@
         v-icon.ml-1(small color='#6E0AD6') mdi-help-circle-outline
       v-col.section-title.pb-0(cols='12')
         | Endereço de Entrega
-      v-row
+      v-row(style='width: 100%;')
         v-col(cols='auto')
           v-avatar(color='#6E0AD630' size='36')
             v-icon(small color='#6E0AD6') mdi-home-outline
@@ -27,7 +27,7 @@
           v-col.section-subtitle.pa-0(cols='12') Rua Dom Pedro de Sá, 123 Casa
           v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Várzea, Recife - PE
       v-row.pt-2.pb-0(justify='space-between')
-        v-col.pb-0.section-title(cols='auto')
+        v-col.pb-0.section-title
           | Opções de Entrega
         v-col.pb-0.text-right.caption(@click='sheet = true' style='color: #6E0AD6') alterar
       v-row(style='width: 100%;')
