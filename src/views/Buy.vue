@@ -36,7 +36,7 @@
             v-icon(small :color='delivery.color') {{ delivery.icon }}
         v-col.pl-0
           v-col.section-subtitle.pa-0(cols='12') {{ delivery.type === 'olx-delivery' ? 'OLX Delivery' : 'Expressa' }}
-          v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Em até {{ delivery.time }} dias úteis
+          v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;')  Em até {{ delivery.hours ? delivery.time + " horas" : delivery.time + " dias úteis" }}
         v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R${{ delivery.price.toFixed(2).replace('.', ',') }}
     v-row
       v-divider
@@ -83,7 +83,7 @@
             | da OLX Pay e Compra segura
     v-bottom-sheet(v-model='sheet')
       v-sheet
-        v-row(v-for='item in deliveryItems' no-gutters)
+        v-row(v-for='(item, i) in deliveryItems' :key='i' no-gutters)
           div(v-ripple @click='delivery = item; sheet = false' style='width: 100%;')
             v-row.px-3
               v-col(cols='auto')
@@ -91,7 +91,7 @@
                   v-icon(small :color='item.color') {{ item.icon }}
               v-col.pl-0
                 v-col.section-subtitle.pa-0(cols='12') {{ item.type === 'olx-delivery' ? 'OLX Delivery' : 'Expressa' }}
-                v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Em até {{ item.time }} dias úteis
+                v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Em até {{ item.hours ? item.time + " horas" : item.time + " dias úteis" }}
               v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R${{ item.price.toFixed(2).replace('.', ',') }}   
 </template>
 
@@ -116,7 +116,8 @@ export default {
               price: 13.00,
               icon: 'mdi-menu',
               color: '#ffa500',
-              time: 2
+              time: 48,
+              hours: true
             },
           ],
           delivery: {
