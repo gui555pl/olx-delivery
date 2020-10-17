@@ -1,8 +1,6 @@
 <template lang="pug">
-div
-  v-app-bar(app, color="#6E0AD6", dark)
-
-  v-card.mx-auto(max-width="400" style="margin-top:15%;")
+div(style='height: 100%; position: relative;')
+  v-card.mx-auto(max-width="400" style="position: absolute; top: 50%; transform: translate(0, -50%)" flat)
     v-container
       v-row(dense="" style="text-align:center;")
         v-col(style="text-align:center;")
@@ -13,7 +11,7 @@ div
                 v-col(style="text-align:center; ")
                     div(style="font-size:40px;") Vendedor
         v-col(cols="12" style="margin-top:20px;")
-          v-card(color="#6E0AD6", dark="" style="height:150px; " @click="")
+          v-card(color="#6E0AD6", dark="" style="height:150px; " @click="$router.push('/home')")
             v-card-title.headline
                 v-col(style="text-align:center;")
                     div(style="font-size:40px;") Comprador

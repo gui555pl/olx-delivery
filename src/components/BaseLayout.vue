@@ -1,5 +1,5 @@
 <template lang='pug'>
-  span
+  span#base-layout
     v-app-bar(app color="#6E0AD6" prominent flat shrink-on-scroll dark)
       v-btn(icon style='position: absolute; left: 0; top: 0; margin: 4px 0 0 4px;')
         v-icon(@click='$router.go(-1)') mdi-arrow-left
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style>
-.v-toolbar__content {
+#base-layout > .v-toolbar__content {
   flex-direction: column !important;
 }
 .avatar-custom {

@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Login from "../views/Login.vue";
 import Home from "@/views/Home.vue";
 import BaseLayout from "@/components/BaseLayout.vue";
+import HomeLayout from "@/components/HomeLayout.vue";
 import Buy from "@/views/Buy.vue";
 import Fluxo from "@/views/Fluxo.vue";
 import EsperaComprador from "@/views/EsperaComprador.vue";
@@ -12,36 +13,14 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/home",
-    name: "Home",
-    component: Home,
-    meta: {
-      hasToolbar: false,
-    },
+    path: "/",
+    name: "Início",
+    component: Fluxo
   },
   {
-    path: "/esperacomprador/:id",
-    name: "EsperaComprador",
-    component: EsperaComprador,
-    meta: {
-      hasToolbar: false,
-    },
-  },
-  {
-    path: "/esperavendedor/:id",
+    path: "/esperavendedor",
     name: "EsperaVendedor",
-    component: EsperaVendedor,
-    meta: {
-      hasToolbar: false,
-    },
-  },
-  {
-    path: "/fluxo",
-    name: "Fluxo",
-    component: Fluxo,
-    meta: {
-      hasToolbar: false,
-    },
+    component: EsperaVendedor
   },
   {
     path: "/login",
@@ -49,14 +28,30 @@ const routes = [
     component: Login,
   },
   {
-    path: "/",
+    path: "/buying",
     component: BaseLayout,
     children: [
       {
-        path: "buy",
+        path: "item/:id",
         name: "Comprar",
         components: { default: Buy },
       },
+    ],
+  },
+  {
+    path: "/home",
+    component: HomeLayout,
+    children: [
+      {
+        path: "items",
+        name: "Home",
+        components: { default: Home },
+      },
+      {
+        path: "esperacomprador/:id",
+        name: "EsperaComprador",
+        component: EsperaComprador
+      }
     ],
   },
 ];
