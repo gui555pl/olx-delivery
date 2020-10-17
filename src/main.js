@@ -6,7 +6,10 @@ import vuetify from "./plugins/vuetify";
 import firebase from "firebase";
 import FieryVue from "fiery-vue";
 Vue.use(FieryVue);
-import '@/style.css'
+import "@/style.css";
+import VuePlaceAutocomplete from "vue-place-autocomplete";
+
+Vue.use(VuePlaceAutocomplete);
 
 Vue.config.productionTip = false;
 

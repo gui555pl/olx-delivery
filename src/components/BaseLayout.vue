@@ -7,8 +7,7 @@
       .avatar-custom
         v-icon {{ $route.meta.baseIcon }}
     v-main
-      zoom-center-transition(:duration="200" mode="out-in")
-        router-view
+      router-view
 </template>
 
 <script>
@@ -72,6 +71,6 @@ export default {
   border: 2px solid white;
   height: 48px;
   width: 48px;
-  background: orange;
+  background: #FF8100;
 }
 </style>

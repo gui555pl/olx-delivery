@@ -9,23 +9,26 @@ import Fluxo from "@/views/Fluxo.vue";
 import EsperaComprador from "@/views/EsperaComprador.vue";
 import HorarioVendedor from "@/views/HorarioVendedor.vue";
 import PendenciaVendedor from "@/views/PendenciaVendedor.vue";
+import Trajeto from "@/views/Trajeto.vue";
 import Agendamento from '@/views/Agendamento.vue';
+import Info from '@/views/Info.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/fluxo",
     name: "Início",
     component: Fluxo
   },
+
   {
     path: "/horariovendedor/:id",
     name: "HorarioVendedor",
     component: HorarioVendedor
   },
   {
-    path: "/login",
+    path: "/",
     name: "Login",
     component: Login,
   },
@@ -40,6 +43,24 @@ const routes = [
         meta: {
           baseText: "Por favor, confirme os dados seguintes para finalizar sua compra",
           baseIcon: "mdi-file-document-outline"
+        }
+      },
+      {
+        path: "/trajeto",
+        name: "Trajeto",
+        component: Trajeto,
+        meta: {
+          baseText: "Programe um trajeto diário",
+          baseIcon: "mdi-map-search"
+        }
+      },
+      {
+        path: "/info",
+        name: "Info",
+        component: Info,
+        meta: {
+          baseText: "Informações da entrega",
+          baseIcon: "mdi-moped-outline"
         }
       },
       {
