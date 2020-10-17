@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div a
+  div(style='height: 2500px;') Testando show
 </template>
 
 <script>

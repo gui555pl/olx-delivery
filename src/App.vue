@@ -1,16 +1,16 @@
 <template lang='pug'>
   v-app
-    ApplicationLayout
+    router-view
 </template>
 
 <script>
-import ApplicationLayout from '@/components/ApplicationLayout';
+import HomeLayout from '@/components/HomeLayout';
 
 export default {
   name: 'App',
 
   components: {
-    ApplicationLayout,
+    HomeLayout,
   },
 
   data: () => ({
