@@ -13,24 +13,24 @@
       v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R$84,00
     v-row
       v-divider
-    v-row#delivery-section
-      v-col.section-title.pb-0(cols='12')
+    v-row#delivery-section(no-gutters)
+      v-col.section-title.py-3(cols='12')
         | Entrega
         v-icon.ml-1(small color='#6E0AD6') mdi-help-circle-outline
       v-col.section-title.pb-0(cols='12')
         | Endereço de Entrega
-      v-row.px-3
+      v-row
         v-col(cols='auto')
           v-avatar(color='#6E0AD630' size='36')
             v-icon(small color='#6E0AD6') mdi-home-outline
         v-col.pl-0
           v-col.section-subtitle.pa-0(cols='12') Rua Dom Pedro de Sá, 123 Casa
           v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Várzea, Recife - PE
-      v-row.px-3.pt-2.pb-0(justify='space-between')
+      v-row.pt-2.pb-0(justify='space-between')
         v-col.pb-0.section-title(cols='auto')
           | Opções de Entrega
         v-col.pb-0.text-right.caption(style='color: #6E0AD6') alterar
-      v-row.px-3(style='width: 100%;')
+      v-row(style='width: 100%;')
         v-col(cols='auto')
           v-avatar(color='#00800030' size='36')
             v-icon(small color='#008000') mdi-rocket-launch-outline
@@ -39,12 +39,12 @@
           v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Várzea, Recife - PE
     v-row
       v-divider
-    v-row#payment-section
-      v-row.px-3.pt-2.pb-0(justify='space-between')
+    v-row#payment-section(no-gutters)
+      v-row.pt-2.pb-0(justify='space-between')
         v-col.pb-0.section-title(cols='auto')
           | Forma de pagamento
         v-col.pb-0.text-right.caption(style='color: #6E0AD6') alterar
-      v-row.px-3(style='width: 100%;')
+      v-row(style='width: 100%;')
         v-col(cols='auto')
           v-avatar(color='#ffa50030' size='36')
             v-icon(small color='#ffa500') mdi-credit-card-outline
@@ -52,20 +52,20 @@
           v-col.section-subtitle.pa-0(cols='12') Saldo OLX Play
     v-row
       v-divider
-    v-row#review-section
-      v-row.px-3.pt-2.pb-0(justify='space-between')
+    v-row#review-section(no-gutters)
+      v-row.pt-2.pb-0(justify='space-between')
         v-col.pb-0.section-title(cols='auto')
           | Resumo
-      v-row.px-3(justify='space-between' style='width: 100%;')
+      v-row(justify='space-between' style='width: 100%;')
         v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400') Produto
         v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400') R$ 130,00
-      v-row.px-3(justify='space-between' style='width: 100%;')  
+      v-row(justify='space-between' style='width: 100%;')  
         v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') Entrega expressa
         v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') R$ 12,52
-      v-row.px-3(justify='space-between' style='width: 100%;')  
+      v-row(justify='space-between' style='width: 100%;')  
         v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') Pagamento à vista
         v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400') 1x R$ 152,52
-      v-row.px-3(justify='space-between' style='width: 100%;')  
+      v-row(justify='space-between' style='width: 100%;')  
         v-col.font-weight-bold.py-1(cols='auto' style='font-weight: 400')
           h3 Total a pagar
         v-col.font-weight-bold.py-1(cols='auto' style='font-weight: 400')
@@ -83,8 +83,14 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
-
+  fiery: true,
+  data () {
+      return {
+          produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
+      }
+  }
 }
 </script>
 
