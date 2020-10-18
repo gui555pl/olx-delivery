@@ -11,6 +11,7 @@ import HorarioVendedor from "@/views/HorarioVendedor.vue";
 import PendenciaVendedor from "@/views/PendenciaVendedor.vue";
 import Trajeto from "@/views/Trajeto.vue";
 import Agendamento from '@/views/Agendamento.vue';
+import AgendamentoVendedor from '@/views/AgendamentoVendedor.vue';
 import Info from '@/views/Info.vue';
 
 Vue.use(VueRouter);
@@ -74,6 +75,15 @@ const routes = [
         component: Agendamento,
         meta: {
           baseText: "Marque seu agendamento",
+          baseIcon: "mdi-clock-outline"
+        }
+      },
+      {
+        path: "agendamentoVendedor/:id",
+        name: "Agendamento Vendedor",
+        component: AgendamentoVendedor,
+        meta: {
+          baseText: "Marque um ou mais horários para despachar o produto",
           baseIcon: "mdi-clock-outline"
         }
       }
