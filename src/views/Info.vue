@@ -27,17 +27,17 @@
                 v-col(cols='auto')
                     v-avatar(color='#ffa50030' size='36')
                         v-icon(small color='#ffa500') mdi-alarm-plus
-                v-col.pl-0
-                    v-col.section-subtitle.pa-0(cols='12' align-self="center") +12 min ao seu trajeto
+                v-col.pl-0(align-self='center')
+                    div.section-subtitle(cols='12' style='line-height: 20px;') +12 min ao seu trajeto
         v-row#delivery-section.mt-4(no-gutters)
             v-col.section-title.pb-0(cols='12')
                 | Você recebe
             v-row
                 v-col(cols='auto')
-                    v-avatar(color='#00800030' size='36')
-                        v-icon(small color='#008000') mdi-cash-multiple
-                v-col.pl-0
-                    v-col.section-subtitle.pa-0(cols='12' align-self="center") R$ 15,52
+                    v-avatar(color='#00800030' size='48')
+                        v-icon(color='#008000') mdi-cash-multiple
+                v-col.pl-0(align-self='center')
+                    v-col.section-subtitle.pa-0(cols='12' align-self="center" style='font-size: 1.5rem !important; color: #008000') R$ 15,52
         v-row#confirm-section(justify="center" align="end" style="margin-top:10%;" no-gutters)
             v-col(cols='8' )
                 v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="changeStatus()") {{btnText}}
