@@ -6,7 +6,7 @@
     v-row#days-section(justify='center')
       v-col.px-2(v-for='(day, i) in days' cols='auto')
         v-card(@click='window = i' :class='window === i ? "orange-outlined" : ""' outlined min-width='66px')
-          v-badge(v-if='daysSelected[i].selected.length' bordered icon='mdi-check' overlap color='green' style='position: absolute; right: 9px; top: 9px;')
+          v-badge(v-if='daysMatched[i].selected.length' bordered icon='mdi-check' overlap color='green' style='position: absolute; right: 9px; top: 9px;')
           v-row(justify='center')
             v-col.section-subtitle.pb-1(cols='auto' style='font-weight: 400' :style='window === i ? { color: "orange" } : {}') {{ day.name }}
           v-row(justify='center')
@@ -18,11 +18,11 @@
       v-row(no-gutters)
         v-col(cols='12')
           v-window.elevation-0(v-model='window')
-            v-window-item(v-for='n in days.length' :key='n')
-              v-row(v-for='i in 24' :key='i' no-gutters justify='space-between' style='width: 100%;')
-                v-col.section-subtitle.pb-1(cols='auto' align-self='center' style='font-weight: 400') {{ i - 1 }}:00 - {{ i }}:00
+            v-window-item(v-for='(day, n) in days' :key='n')
+              v-row(v-for='i in day.selected' :key='i' no-gutters justify='space-between' style='width: 100%;')
+                v-col.section-subtitle.pb-1(cols='auto' align-self='center' style='font-weight: 400') {{ i }}:00 - {{ i + 1 }}:00
                 v-col.section-subtitle.pb-1(cols='auto' align-self='center' style='font-weight: 400')
-                  v-checkbox(v-model='daysSelected[n-1].selected' color='orange' style='margin-top: 0;' hide-details :value='i-1')
+                  v-checkbox(v-model='daysMatched[n].selected' color='orange' style='margin-top: 0;' hide-details :value='i')
     v-row.mt-3
       v-divider
     v-row#confirm-section
@@ -37,12 +37,25 @@ export default {
   data () {
     return {
       window: 0,
-      produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id)),
-      hoursPossible: [],
-      days: []
+      days: [],
+      daysMatched: [
+        { date: null, selected: [] },
+        { date: null, selected: [] }
+      ],
+      produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
     }
   },
   methods: {
+    confirm () {
+      try {
+        this.$fires.produto.update({
+          horasCorrespondidas: this.daysMatched
+        })
+        this.$router.push(`/buying/match/${this.$route.params.id}`)
+      } catch (error) {
+        console.log(error)
+      }
+    },
     numberToWeek (number) {
       switch (number) {
         case 0:
@@ -63,27 +76,37 @@ export default {
     }
   },
   async mounted () {
-    // this.produto = await this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
-    setTimeout(() => {
-      console.log(this.produto.horasDisponiveisComprador)
-      this.hoursPossible = this.produto.horasDisponiveisComprador
-      const day = this.hoursPossible[0].date.toDate().getDay()
-      const date = this.hoursPossible[0].date.toDate().getDate()
-      const day2 = this.hoursPossible[1].date.toDate().getDay()
-      const date2 = this.hoursPossible[1].date.toDate().getDate()
-      this.days = [
-        {
-          active: false,
-          name: this.numberToWeek(day),
-          date: date
-        },
-        {
-          active: false,
-          name: this.numberToWeek(day2),
-          date: date2
-        }
-      ]
-    }, 500)
+    this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id), {
+      onSuccess: (produto) => {
+        this.daysMatched[0].date = produto.horasDisponiveisComprador[0].date
+        this.daysMatched[1].date = produto.horasDisponiveisComprador[1].date
+        let hoursPossible = produto.horasDisponiveisComprador
+        hoursPossible = hoursPossible.map(horas => {
+          horas.selected.sort(function(a, b) {
+            return a - b
+          })
+          return horas
+        })
+        const day = hoursPossible[0].date.toDate().getDay()
+        const date = hoursPossible[0].date.toDate().getDate()
+        const day2 = hoursPossible[1].date.toDate().getDay()
+        const date2 = hoursPossible[1].date.toDate().getDate()
+        this.days = [
+          {
+            active: false,
+            name: this.numberToWeek(day),
+            date: date,
+            selected: produto.horasDisponiveisComprador[0].selected
+          },
+          {
+            active: false,
+            name: this.numberToWeek(day2),
+            date: date2,
+            selected: produto.horasDisponiveisComprador[1].selected
+          }
+        ]  
+      } 
+    })
   }
 }
 </script>

@@ -12,6 +12,7 @@ import PendenciaVendedor from "@/views/PendenciaVendedor.vue";
 import Trajeto from "@/views/Trajeto.vue";
 import Agendamento from '@/views/Agendamento.vue';
 import AgendamentoVendedor from '@/views/AgendamentoVendedor.vue';
+import MatchHoursDone from '@/views/MatchHoursDone'
 import Info from '@/views/Info.vue';
 import Parabens from '@/views/Parabens.vue';
 
@@ -110,6 +111,15 @@ const routes = [
         meta: {
           baseText: "Marque um ou mais horários para despachar o produto",
           baseIcon: "mdi-clock-outline"
+        }
+      },
+      {
+        path: "match/:id",
+        name: "Combinado",
+        component: MatchHoursDone,
+        meta: {
+          baseText: "Boa! Vocês marcaram horários correspondentes",
+          baseIcon: "mdi-calendar-check-outline"
         }
       }
     ],
