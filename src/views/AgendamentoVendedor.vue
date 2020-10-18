@@ -4,7 +4,7 @@
       v-col.mt-3
         h2.text-center(style='font-weight: 500;') Escolha uma opção
     v-row#days-section(justify='center')
-      v-col.px-2(v-for='(day, i) in days' cols='auto')
+      v-col.px-2(v-for='(day, i) in days' :key='i' cols='auto')
         v-card(@click='window = i' :class='window === i ? "orange-outlined" : ""' outlined min-width='66px')
           v-badge(v-if='daysMatched[i].selected.length' bordered icon='mdi-check' overlap color='green' style='position: absolute; right: 9px; top: 9px;')
           v-row(justify='center')
