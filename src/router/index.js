@@ -83,7 +83,7 @@ const routes = [
         }
       },
       {
-        path: "/info",
+        path: "/info/:id",
         name: "Info",
         component: Info,
         meta: {
@@ -92,9 +92,13 @@ const routes = [
         }
       },
       {
-        path: "esperacomprador/:id",
+        path: "/esperacomprador/:id",
         name: "EsperaComprador",
-        component: EsperaComprador
+        component: EsperaComprador,
+        meta: {
+          baseText: "Esperando retorno do vendedor",
+          baseIcon: "mdi-timer-sand"
+        }
       },
       {
         path: "agendamento/:id",

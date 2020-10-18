@@ -53,7 +53,10 @@ export default {
         })
       } catch (error) {
         console.log(error)
+
       }
+      console.log() 
+      this.$router.push('/esperacomprador/'+ this.$route.params.id)
     },
     numberToWeek (number) {
       switch (number) {
