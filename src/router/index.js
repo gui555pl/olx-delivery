@@ -16,6 +16,7 @@ import MatchHoursDone from '@/views/MatchHoursDone'
 import Info from '@/views/Info.vue';
 import Parabens from '@/views/Parabens.vue';
 import ProximasEntregas from '@/views/ProximasEntregas.vue';
+import AguardandoEntrega from '@/views/AguardandoEntrega.vue'
 
 Vue.use(VueRouter);
 
@@ -135,7 +136,16 @@ const routes = [
           baseText: "Boa! Vocês marcaram horários correspondentes",
           baseIcon: "mdi-calendar-check-outline"
         }
-      }
+      },
+      {
+        path: "/aguardando-entrega/:id",
+        name: "Aguardando Entrega",
+        component: AguardandoEntrega,
+        meta: {
+          baseText: "Confirme o código enviado ao comprador",
+          baseIcon: "mdi-numeric"
+        }
+      },
     ],
   },
   {
