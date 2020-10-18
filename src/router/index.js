@@ -44,7 +44,7 @@ const routes = [
           baseText: "Por favor, confirme os dados seguintes para finalizar sua compra",
           baseIcon: "mdi-file-document-outline"
         }
-      },
+      },s
 
       {
         path: "/parabens/:id",
@@ -115,7 +115,7 @@ const routes = [
         component: ProximasEntregas,
         meta: {
           baseText: "Minhas próximas entregas",
-          baseIcon: "mdi-clock-outline"
+          baseIcon: "mdi-moped-outline"
         }
       },
       {
