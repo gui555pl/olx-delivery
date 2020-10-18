@@ -36,25 +36,13 @@ export default {
   fiery: true,
   data () {
     return {
-      days: [],
-      daysSelected: [
-        { date: null, selected: [] },
-        { date: null, selected: [] }
-      ],
       window: 0,
-      produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
+      produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id)),
+      hoursPossible: [],
+      days: []
     }
   },
   methods: {
-    confirm () {
-      try {
-        this.$fires.produto.update({
-          horasDisponiveisComprador: this.daysSelected
-        })
-      } catch (error) {
-        console.log(error)
-      }
-    },
     numberToWeek (number) {
       switch (number) {
         case 0:
@@ -74,29 +62,28 @@ export default {
       }
     }
   },
-  mounted () {
-    const currentDate = new Date(Date.now())
-    const currentDate2 = new Date()
-    let tomorrow = new Date(currentDate2)
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    const day = currentDate.getDay()
-    const date = currentDate.getDate()
-    const day2 = tomorrow.getDay()
-    const date2 = tomorrow.getDate()
-    this.daysSelected[0].date = currentDate2
-    this.daysSelected[1].date = tomorrow
-    this.days = [
-      {
-        active: false,
-        name: 'Hoje',
-        date: date
-      },
-      {
-        active: false,
-        name: this.numberToWeek(day2),
-        date: date2
-      }
-    ]
+  async mounted () {
+    // this.produto = await this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
+    setTimeout(() => {
+      console.log(this.produto.horasDisponiveisComprador)
+      this.hoursPossible = this.produto.horasDisponiveisComprador
+      const day = this.hoursPossible[0].date.toDate().getDay()
+      const date = this.hoursPossible[0].date.toDate().getDate()
+      const day2 = this.hoursPossible[1].date.toDate().getDay()
+      const date2 = this.hoursPossible[1].date.toDate().getDate()
+      this.days = [
+        {
+          active: false,
+          name: this.numberToWeek(day),
+          date: date
+        },
+        {
+          active: false,
+          name: this.numberToWeek(day2),
+          date: date2
+        }
+      ]
+    }, 500)
   }
 }
 </script>
