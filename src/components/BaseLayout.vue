@@ -2,7 +2,7 @@
   span#base-layout
     v-app-bar(app color="#6E0AD6" style='transition: 0.04s;' prominent flat shrink-on-scroll dark)
       v-btn(icon style='position: absolute; left: 0; top: 0; margin: 4px 0 0 4px;')
-        v-icon(@click='$router.go(-1)') mdi-arrow-left
+        v-icon(@click='goBack()') mdi-arrow-left
       div(:style='textOpacityComputed' style='align-self: center !important; margin: auto; font-size: 80%; font-weight: 600; padding: 8px 0 0 0; text-align: center; maring-bottom: auto;') {{ $route.meta.baseText }} 
       .avatar-custom
         v-icon {{ $route.meta.baseIcon }}
@@ -42,6 +42,13 @@ export default {
       const hp = heightPercentage
       this.textOpacity = (1.77777778 * hp - 77.77777778)/100
       
+    },
+    goBack () {
+      if (this.$route.name === 'Parabens') {
+        this.$router.push('/home')
+      } else {
+        this.$router.go(-1)
+      }
     }
   },
   created () {
