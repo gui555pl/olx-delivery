@@ -27,22 +27,34 @@
       v-divider
     v-row#confirm-section
       v-col(cols='12')
-        v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important' @click="") Confirmar
+        v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important' @click="confirm()") Confirmar
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
+  fiery: true,
   data () {
     return {
       days: [],
       daysSelected: [
-        { selected: [] },
-        { selected: [] }
+        { date: null, selected: [] },
+        { date: null, selected: [] }
       ],
-      window: 0
+      window: 0,
+      produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
     }
   },
   methods: {
+    confirm () {
+      try {
+        this.$fires.produto.update({
+          horasDisponiveisComprador: this.daysSelected
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    },
     numberToWeek (number) {
       switch (number) {
         case 0:
@@ -71,9 +83,8 @@ export default {
     const date = currentDate.getDate()
     const day2 = tomorrow.getDay()
     const date2 = tomorrow.getDate()
-    console.log(date,day)
-    console.log(day2, date2)
-    console.log(this.daysSelected[0].selected)
+    this.daysSelected[0].date = currentDate2
+    this.daysSelected[1].date = tomorrow
     this.days = [
       {
         active: false,
