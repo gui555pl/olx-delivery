@@ -16,12 +16,6 @@ export default {
   fiery: true,
   data () {
     return {
-      window: 0,
-      days: [],
-      daysMatched: [
-        { date: null, selected: [] },
-        { date: null, selected: [] }
-      ],
       produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
     }
   },
@@ -29,64 +23,13 @@ export default {
     confirm () {
       try {
         this.$fires.produto.update({
-          horasCorrespondidas: this.daysMatched
+          status: 'entregue'
         })
-        this.$router.push(`/buying/match/${this.$route.params.id}`)
+        this.$router.push(`/parabens/${this.$route.params.id}`)
       } catch (error) {
         console.log(error)
       }
-    },
-    numberToWeek (number) {
-      switch (number) {
-        case 0:
-          return 'Dom'
-        case 1:
-          return 'Seg'
-        case 2:
-          return 'Ter'
-        case 3:
-          return 'Qua'
-        case 4:
-          return 'Qui'
-        case 5:
-          return 'Sex'
-        case 6:
-          return 'Sáb'
-      }
     }
-  },
-  async mounted () {
-    this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id), {
-      onSuccess: (produto) => {
-        this.daysMatched[0].date = produto.horasDisponiveisComprador[0].date
-        this.daysMatched[1].date = produto.horasDisponiveisComprador[1].date
-        let hoursPossible = produto.horasDisponiveisComprador
-        hoursPossible = hoursPossible.map(horas => {
-          horas.selected.sort(function(a, b) {
-            return a - b
-          })
-          return horas
-        })
-        const day = hoursPossible[0].date.toDate().getDay()
-        const date = hoursPossible[0].date.toDate().getDate()
-        const day2 = hoursPossible[1].date.toDate().getDay()
-        const date2 = hoursPossible[1].date.toDate().getDate()
-        this.days = [
-          {
-            active: false,
-            name: this.numberToWeek(day),
-            date: date,
-            selected: produto.horasDisponiveisComprador[0].selected
-          },
-          {
-            active: false,
-            name: this.numberToWeek(day2),
-            date: date2,
-            selected: produto.horasDisponiveisComprador[1].selected
-          }
-        ]  
-      } 
-    })
   }
 }
 </script>
