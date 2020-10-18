@@ -13,21 +13,21 @@
                             placeholder="Informe um endereço...",
                             v-on:placechanged="IDA"
                         ) 
-                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioIda" style="margin-left:5%;text-align:end;" required='')
+                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioIda" style="margin-left:20%;text-align:end;" required='')
 
             v-col(cols="12")
                 v-row(style="justify:space-around;")
                     v-col
                         h4 Origem 
                     v-col 
-                        h4(style="text-align:end; ") Horário de volta
+                        h4(style="text-align:end;") Horário de volta
                 v-row
                     v-col(cols='6')
                         vue-google-autocomplete#map2(style=""
                         placeholder="Informe um endereço...",
                         v-on:placechanged="VOLTA"
                         ) 
-                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioVolta" style="margin-left:5%; text-align:end;" required='')
+                    input#appt(type='time' name='appt' min='09:00' max='18:00' v-model="horarioVolta" style="margin-left:20%; text-align:end;" required='')
         v-row#confirm-section(justify="center" align="end" style="margin-top:10%;" no-gutters)
             v-col(cols='8' )
                 v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="programar()") Programar</template>
