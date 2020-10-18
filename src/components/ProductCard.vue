@@ -21,13 +21,16 @@ v-card(style='box-shadow: 1px 1px 1px rgba(0,0,0,0.10);' v-ripple, @click="go()"
 
 <script>
 export default {
-  props: ["product","isPendencia"],
+  props: ["product","isPendencia","Info"],
   data() {
     return {};
   },
   methods: {
     go() {
       var id = this.product[".uid"].split("/")[4];
+      if(this.Info==true){
+        this.$router.push('/info')
+      }
       if (this.isPendencia) {
         this.$router.push('/horariovendedor/'+id)
       } else {

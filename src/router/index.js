@@ -15,6 +15,7 @@ import AgendamentoVendedor from '@/views/AgendamentoVendedor.vue';
 import MatchHoursDone from '@/views/MatchHoursDone'
 import Info from '@/views/Info.vue';
 import Parabens from '@/views/Parabens.vue';
+import ProximasEntregas from '@/views/ProximasEntregas.vue';
 
 Vue.use(VueRouter);
 
@@ -101,6 +102,15 @@ const routes = [
         component: Agendamento,
         meta: {
           baseText: "Marque seu agendamento",
+          baseIcon: "mdi-clock-outline"
+        }
+      },
+      {
+        path: "/proximasentregas",
+        name: "ProximasEntregas",
+        component: ProximasEntregas,
+        meta: {
+          baseText: "Minhas próximas entregas",
           baseIcon: "mdi-clock-outline"
         }
       },
