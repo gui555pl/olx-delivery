@@ -40,29 +40,60 @@
                     v-col.section-subtitle.pa-0(cols='12' align-self="center" style='font-size: 1.5rem !important; color: #008000') R$ 15,52
         v-row#confirm-section(justify="center" align="end" style="margin-top:10%;" no-gutters)
             v-col(cols='8' )
-                v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="changeStatus()") {{btnTxt}}
+                v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="changeStatus()") {{btnText}}
         
 
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
     fiery: true,
     data () {
         return {
-            produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
+            produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id)),
+            btnText:"Carregando status...",
+            user: this.$fiery(firebase.firestore().collection("users").doc(this.$store.getters.user.email)),
+
         }
     },
-    computed: {
-        btnTxt () {
-            if (this.produto.status == 'aguardando_entregador') {
-                return `Aceitar entrega`
-            } else if (this.produto.status == 'aguardando_coleta') {
-                return `Confirmar coleta`
-            } else if (this.produto.status == 'aguardando_entrega') {
-                return `Confirmar entrega`
+    methods: {
+        changeStatus(){
+             if (this.produto.status == 'aguardando_entregador') {
+                this.$fires.produto.update({
+                    status: 'aguardando_coleta'
+                })
             }
+            else if(this.produto.status =='aguardando_coleta'){
+                this.$fires.produto.update({
+                    status: 'aguardando_entrega'
+                })
+            }
+            else{
+                this.$fires.user.update({
+                    saldo: 15.52
+                })
+                this.$router.push('/parabens/'+this.$route.params.id)
+            }
+
         }
+    },
+    async mounted(){
+      this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id), {
+      onSuccess: (produto) => {
+          if (this.produto.status == 'aguardando_entregador') {
+                this.btnText =  `Aceitar entrega`
+            } else if (this.produto.status == 'aguardando_coleta') {
+                this.btnText = `Confirmar coleta`
+            } else if (this.produto.status == 'aguardando_entrega') {
+                this.btnText = `Confirmar entrega`
+            }
+      }
+      })
+    },
+    computed: {
+    },
+    created(){
     }
 }
 </script>

@@ -49,12 +49,14 @@ export default {
     confirm () {
       try {
         this.$fires.produto.update({
-          horasCorrespondidas: this.daysMatched
+          horasCorrespondidas: this.daysMatched,
+          status: 'aguardando_entregador'
         })
         this.$router.push(`/buying/match/${this.$route.params.id}`)
       } catch (error) {
         console.log(error)
       }
+        
     },
     numberToWeek (number) {
       switch (number) {
