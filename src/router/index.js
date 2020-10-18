@@ -47,12 +47,12 @@ const routes = [
       },
 
       {
-        path: "/parabens",
+        path: "/parabens/:id",
         name: "Parabens",
         component: Parabens,
         meta: {
           baseText: "Parabéns!",
-          baseIcon: "mdi-party"
+          baseIcon: "mdi-cake-variant"
         }
       },
       {
