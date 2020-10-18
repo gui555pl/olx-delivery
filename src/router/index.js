@@ -12,6 +12,7 @@ import PendenciaVendedor from "@/views/PendenciaVendedor.vue";
 import Trajeto from "@/views/Trajeto.vue";
 import Agendamento from '@/views/Agendamento.vue';
 import Info from '@/views/Info.vue';
+import Parabens from '@/views/Parabens.vue';
 
 Vue.use(VueRouter);
 
@@ -22,11 +23,7 @@ const routes = [
     component: Fluxo
   },
 
-  {
-    path: "/horariovendedor/:id",
-    name: "HorarioVendedor",
-    component: HorarioVendedor
-  },
+
   {
     path: "/",
     name: "Login",
@@ -43,6 +40,34 @@ const routes = [
         meta: {
           baseText: "Por favor, confirme os dados seguintes para finalizar sua compra",
           baseIcon: "mdi-file-document-outline"
+        }
+      },
+
+      {
+        path: "/parabens",
+        name: "Parabens",
+        component: Parabens,
+        meta: {
+          baseText: "Parabéns!",
+          baseIcon: "mdi-party"
+        }
+      },
+      {
+        path: "/horariovendedor/:id",
+        name: "HorarioVendedor",
+        component: HorarioVendedor,
+        meta: {
+          baseText: "Por favor, confirme os dados seguintes para finalizar sua compra",
+          baseIcon: "mdi-currency-usd"
+        }
+      },
+      {
+        path: "/pendenciavendedor",
+        name: "PendenciaVendedor",
+        component: PendenciaVendedor,
+        meta: {
+          baseText: "Suas vendas pendentes",
+          baseIcon: "mdi-cash-multiple"
         }
       },
       {
@@ -78,11 +103,6 @@ const routes = [
         }
       }
     ],
-  },
-  {
-    path: "/pendenciavendedor",
-    name: "PendenciaVendedor",
-    component: PendenciaVendedor
   },
   {
     path: "/home",
