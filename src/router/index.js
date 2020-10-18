@@ -111,7 +111,7 @@ const routes = [
         component: ProximasEntregas,
         meta: {
           baseText: "Minhas próximas entregas",
-          baseIcon: "mdi-clock-outline"
+          baseIcon: "mdi-moped-outline"
         }
       },
       {
