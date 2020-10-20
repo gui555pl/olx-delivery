@@ -9,7 +9,7 @@
     v-main
       router-view
 </template>
-
+cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME=com.delivery.app --save
 <script>
 import { mapFields } from 'vuex-map-fields';
 export default {
