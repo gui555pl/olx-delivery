@@ -19,6 +19,7 @@ div(style="justify-content:center; text-align:center;")
 </template>
 
 <script>
+import products from './data/products'
 import firebase from 'firebase'
 export default {
   name: "login",
@@ -33,33 +34,8 @@ export default {
   },
   methods: {
     adicionarProduto() {
-        var rand = Math.random()*10
-        const produto1 = {
-            img: 'https://images.tcdn.com.br/img/img_prod/313499/mouse_gamer_t_dagger_lieutenant_rgb_7_botoes_8000dpi_t_tgm301_9403_1_20200709122258.jpg',
-            preço: 140,
-            descricao:'Mouse gamer rgb',
-            status: 'nao-vendido'
-        }
-        const produto2 = {
-            img: 'https://http2.mlstatic.com/D_NQ_NP_897612-MLB31675315010_082019-W.jpg',
-            preço: 900,
-            descricao:'Caixa de som JBL',
-            status: 'nao-vendido'
-        }
-        const produto3 = {
-            img: 'https://images-na.ssl-images-amazon.com/images/I/41-MkaTuBdL._AC_SY400_.jpg',
-            preço: 430,
-            descricao:'Fone de ouvido',
-            status: 'nao-vendido'
-        }
-        var produto = {}
-        if (rand%3 == 0) {
-            produto = produto1
-        }else if (rand%3 == 1) {
-            produto = produto2
-        }else {
-            produto = produto3
-        }
+        let rand = Math.floor(Math.random() * products.length) + 1
+        let produto = products[rand - 1]
         produto.vendedor_email =  this.email
         produto.vendedor_name = this.name,
         this.$store.commit('setUser', {
