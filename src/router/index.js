@@ -71,7 +71,7 @@ const routes = [
         component: PendenciaVendedor,
         meta: {
           baseText: "Suas vendas pendentes",
-          baseIcon: "mdi-cash-multiple"
+          baseIcon: "mdi-calendar-clock"
         }
       },
       {
