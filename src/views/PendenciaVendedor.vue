@@ -22,9 +22,12 @@ export default {
   },
   data() {
       return{
-        produtos: this.$fiery(firebase.firestore().collection("produtos").where('status','==','aguardando_vendedor'))
+        produtos: []
       }
   },
+  mounted () {
+    this.produtos = this.$fiery(firebase.firestore().collection("produtos").where('status','==','aguardando_vendedor').where('vendedor_email', '==', this.$store.getters.user.email))
+  }
 };
 </script>
 

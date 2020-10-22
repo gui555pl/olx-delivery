@@ -15,7 +15,6 @@ div(style='height: 100%; position: relative;')
             v-card-title.headline
                 v-col(style="text-align:center;")
                     div(style="font-size:30px;") Comprador
-      
         v-col(cols="12" style="margin-top:10px;")
           v-card(color="#6E0AD6", dark="" style="height:100px;" @click="$router.push('/trajeto')")
             v-card-title.headline
@@ -25,13 +24,12 @@ div(style='height: 100%; position: relative;')
           v-card(color="#6E0AD6", dark="" style="height:100px;" @click="$router.push('/proximasentregas')")
             v-card-title.headline
                 v-col(style="text-align:center;")
-                    div(style="font-size:30px;") Minhas entregas               
+                    div(style="font-size:30px;") Minhas entregas
             //- v-card-subtitle
             //-   | Listen to your favorite artists and albums whenever and wherever, online and offline.
             //- v-card-actions
             //-   v-btn(text="")
             //-     | Listen Now
-       
 </template>
 
 <script>
