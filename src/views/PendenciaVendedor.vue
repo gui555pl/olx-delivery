@@ -2,7 +2,7 @@
     div
       v-col
         template(v-if='!loading')  
-          v-row(style="margin-top:10%; justify-content:center;" v-if="produtos.length == 0")
+          v-row(style="margin-top:10%; justify-content:center; text-align: center;" v-if="produtos.length == 0")
               img(src="../imagens/sad.jpg" height="200px;" )
               h3(style="font-size:25px; color:#565656#; margin-top:20px; width:70%; ") Você não tem nenhuma venda pendente
           v-row#product-list(v-else)
