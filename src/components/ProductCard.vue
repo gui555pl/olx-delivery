@@ -32,7 +32,7 @@ export default {
         this.$router.push('/info')
       }
       if (this.isPendencia) {
-        this.$router.push('/horariovendedor/'+id)
+        this.$router.push('/buying/agendamentoVendedor/'+id)
       } else {
         console.log("ID ", id);
         var rota = `/buying/item/${id}`;

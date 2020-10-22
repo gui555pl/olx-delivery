@@ -54,7 +54,7 @@ export default {
             produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id)),
             btnText:"Carregando status...",
             user: this.$fiery(firebase.firestore().collection("users").doc(this.$store.getters.user.email)),
-
+            precoTrajeto:15.52
         }
     },
     methods: {
@@ -70,8 +70,9 @@ export default {
                 })
             }
             else{
+              this.precoTrajeto= this.user.saldo + this.precoTrajeto
                 this.$fires.user.update({
-                    saldo: 15.52
+                    saldo: this.precoTrajeto
                 })
                 this.$router.push('/parabens/'+this.$route.params.id)
             }

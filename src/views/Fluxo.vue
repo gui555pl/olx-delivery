@@ -5,21 +5,27 @@ div(style='height: 100%; position: relative;')
       v-row(dense="" style="text-align:center;")
         v-col(style="text-align:center;")
             h3() Escolha um fluxo para testar a jornada de cada usuário
-        v-col(cols="12" style="margin-top:20px;"  )
-          v-card(color="#6E0AD6", dark="" style="height:150px; " @click="")
+        v-col(cols="12" style="margin-top:10px;"  )
+          v-card(color="#6E0AD6", dark="" style="height:100px; " @click="$router.push('/pendenciavendedor')")
             v-card-title.headline
                 v-col(style="text-align:center; ")
-                    div(style="font-size:40px;") Vendedor
-        v-col(cols="12" style="margin-top:20px;")
-          v-card(color="#6E0AD6", dark="" style="height:150px; " @click="$router.push('/home')")
+                    div(style="font-size:30px;") Vendedor
+        v-col(cols="12" style="margin-top:10px;")
+          v-card(color="#6E0AD6", dark="" style="height:100px; " @click="$router.push('/home')")
             v-card-title.headline
                 v-col(style="text-align:center;")
-                    div(style="font-size:40px;") Comprador
-        v-col(cols="12" style="margin-top:20px;")
-          v-card(color="#6E0AD6", dark="" style="height:150px;" @click="")
+                    div(style="font-size:30px;") Comprador
+      
+        v-col(cols="12" style="margin-top:10px;")
+          v-card(color="#6E0AD6", dark="" style="height:100px;" @click="$router.push('/trajeto')")
             v-card-title.headline
                 v-col(style="text-align:center;")
-                    div(style="font-size:40px;") Entregador            
+                    div(style="font-size:30px;") Planejar trajeto
+        v-col(cols="12" style="margin-top:10px;")
+          v-card(color="#6E0AD6", dark="" style="height:100px;" @click="$router.push('/proximasentregas')")
+            v-card-title.headline
+                v-col(style="text-align:center;")
+                    div(style="font-size:30px;") Minhas entregas               
             //- v-card-subtitle
             //-   | Listen to your favorite artists and albums whenever and wherever, online and offline.
             //- v-card-actions
