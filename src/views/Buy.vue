@@ -95,7 +95,7 @@
                     img(v-else :src='item.img' style='height: auto; width: 90%;')
                 v-col.pl-0
                   v-col.section-subtitle.pa-0(cols='12') {{ item.type === 'olx-delivery' ? 'OLX Delivery' : 'Expressa' }}
-                  v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Em até {{ item.hours ? item.time + " horas" : item.time + " dias úteis" }}
+                  v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Em até {{ item.hours ? item.time + " hora" + (item.time > 1 ? "s" : "") : item.time + " dias úteis" }}
                 v-col.body-2.font-weight-medium(cols='3' align-self='center' style='text-align: right;') R${{ item.price.toFixed(2).replace('.', ',') }}   
           v-row(no-gutters justify='center')
             v-col.pb-3(cols='auto')
