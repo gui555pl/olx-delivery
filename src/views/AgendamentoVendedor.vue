@@ -14,7 +14,7 @@
               h3 {{ day.date }}
     v-row#hours-section(no-gutters)
       v-col.section-title.pb-0(cols='12') Agendamento
-      v-col.section-subtitle.py-1(cols='auto' style='font-weight: 400; color: red;') Selecione no mínimo 4 horários por dia
+      v-col.section-subtitle.py-1(cols='12' style='font-weight: 400; color: red;') Selecione no mínimo 4 horários por dia
       v-row(no-gutters)
         v-col(cols='12')
           v-window.elevation-0(v-model='window')
