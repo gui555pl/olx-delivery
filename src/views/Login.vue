@@ -23,16 +23,10 @@ div(style="justify-content:center; text-align:center; height: 100%;")
             outlined
             hide-details
             )
-        v-row.pa-0
-          v-col
-            h3.text-left(style='font-weight: 500;') Tipo
-            v-select(
-            v-model="type"
-            :items='types'
-            required
-            outlined
-            hide-details
-            )
+        v-col(cols='12' align-self='center' style='text-align: center;')
+          div.caption(style='display: inline-block;') O email é necessário apenas para que tenhamos um usuário único.&nbsp;
+            span(style='color: #6E0AD6') Qualquer identificador único &nbsp;
+            | que você tenha em mente pode ser utilizado.
         v-row#confirm-section
           v-col.pt-0(cols='12')
             v-btn(color='#ffa500' v-bind='isDisabled' large block depressed rounded style='text-transform: none !important' @click="adicionarProduto()") Entrar
@@ -62,23 +56,8 @@ export default {
     return {
       name: "",
       email: "",
-      type: "comprador",
       produtos: this.$fiery(firebase.firestore().collection("produtos")),
       users: this.$fiery(firebase.firestore().collection("users")),
-      types: [
-        {
-          value: 'vendedor',
-          text: 'Vendedor'
-        },
-        {
-          value: 'comprador',
-          text: 'Comprador'
-        },
-        {
-          value: 'entregador',
-          text: 'Entregador'
-        }
-      ]
     };
   },
   methods: {
@@ -98,7 +77,6 @@ export default {
         this.$store.commit('setUser', {
         email: this.email,
         name: this.name,
-        type: this.type,
         endereco: enderecoVendedor
         });
         this.$fires.produtos.add(produto)
@@ -106,7 +84,6 @@ export default {
         const user = {
           name: this.name,
           email: this.email,
-          type: this.type,
           saldo: 0,
           endereco: enderecoVendedor
         }
