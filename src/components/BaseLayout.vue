@@ -6,7 +6,7 @@
       div(:style='textOpacityComputed' style='align-self: center !important; margin: auto; font-size: 80%; font-weight: 600; padding: 8px 0 0 0; text-align: center; maring-bottom: auto;') {{ $route.meta.baseText }} 
       .avatar-custom
         v-icon {{ $route.meta.baseIcon }}
-    v-main
+    v-main(:style='isPendencias')
       router-view
 </template>
 cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME=com.delivery.app --save
@@ -29,6 +29,16 @@ export default {
         return { color: "rgba(255, 255, 255, 1" }
       } else {
         return { color: "rgba(255, 255, 255," + this.textOpacity + ")" }
+      }
+    },
+    isPendencias () {
+      if (this.$route.path === '/pendenciavendedor') {
+        return {
+          background: '#f0f0f0',
+          'min-height': '100vh'
+        }
+      } else {
+        return {}
       }
     }
   },
