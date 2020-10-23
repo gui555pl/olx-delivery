@@ -1,5 +1,5 @@
 <template lang='pug'>
-v-card(style='box-shadow: 1px 1px 1px rgba(0,0,0,0.10);' v-ripple, @click="go()")
+v-card(style='box-shadow: 1px 1px 1px rgba(0,0,0,0.10); background:#fffffe;' v-ripple, @click="go()")
   v-row
     v-col(cols="3")
       v-img(contain, aspect-ratio="1", :src="product.img")

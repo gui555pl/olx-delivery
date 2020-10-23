@@ -1,0 +1,18 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "OlxDelivery.keystore",
+            "storePassword": "2kkin1year",
+            "alias": "OlxDelivery",
+            "password": "2kkin1year",
+            "keystoreType": ""
+        },
+        "release": {
+            "keystore": "OlxDelivery.keystore",
+            "storePassword": "2kkin1year",
+            "alias": "OlxDelivery",
+            "password": "2kkin1year",
+            "keystoreType": ""
+        }
+    }
+}

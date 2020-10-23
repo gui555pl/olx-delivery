@@ -1,6 +1,8 @@
 <template lang='pug'>
   v-app
-    router-view
+    transition (name="")
+      router-view()
+
 </template>
 
 <script>
@@ -16,5 +18,12 @@ export default {
   data: () => ({
     //
   }),
+  watch: {
+  '$route' (to, from) {
+    const toDepth = to.path.split('/').length
+    const fromDepth = from.path.split('/').length
+    this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+  }
+}
 };
 </script>
