@@ -17,12 +17,12 @@ v-card(style='box-shadow: 1px 1px 1px rgba(0,0,0,0.10);' v-ripple, @click="go()"
           span.grey--text.body-2.font-weight-light.pa-0(
             style="font-size: 0.7rem !important;"
           ) {{ product.createdAt.toDate().getDate() + ' de ' + months[product.createdAt.toDate().getMonth()] }}, {{ product.endereco.name.split('-')[1].split(',')[0] }}
-          v-chip.ml-3(color='green' x-small dark) Seu produto
+          v-chip.ml-3(v-if='isOwner' color='green' x-small dark) Seu produto
 </template>
 
 <script>
 export default {
-  props: ["product","isPendencia","Info"],
+  props: ["product","isPendencia","Info","isOwner"],
   data() {
     return {
       months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
