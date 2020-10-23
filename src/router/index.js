@@ -135,7 +135,8 @@ const routes = [
         component: MatchHoursDone,
         meta: {
           baseText: "Boa! Vocês marcaram horários correspondentes",
-          baseIcon: "mdi-calendar-check-outline"
+          baseIcon: "mdi-calendar-check-outline",
+          notShowBack: true
         }
       },
       {
