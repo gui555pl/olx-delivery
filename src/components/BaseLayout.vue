@@ -9,7 +9,7 @@
     v-main(:style='isPendencias')
       router-view
 </template>
-cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME=com.delivery.app --save
+// cordova plugin add cordova-plugin-customurlscheme --variable URL_SCHEME=com.olxdelivery.app --save
 <script>
 import { mapFields } from 'vuex-map-fields';
 export default {

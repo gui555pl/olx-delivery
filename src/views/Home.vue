@@ -14,7 +14,7 @@
           | Assim você faz o papel de comprador e vendedor e consegue acompanhar todo o fluxo em uma só conta.
     v-row#product-list
       v-col.py-1(v-if='!loading' cols='12' v-for='(produto, i) in produtos' :key='i')
-        ProductCard(:product='produto' :isOwner='produto.vendedor_email === user.email')
+        ProductCard(:product='produto' :isOwner='produto.vendedor_email === user.email' style='background: white !important;')
       v-col.py-1(v-if='loading' cols='12' v-for='i in 6' :key='i')  
         v-skeleton-loader(height='93.75px' type="list-item-avatar-three-line")
 </template>

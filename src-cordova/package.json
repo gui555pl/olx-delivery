@@ -1,5 +1,5 @@
 {
-  "name": "com.delivery.app",
+  "name": "com.olxdelivery.app",
   "displayName": "OlxDelivery",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
@@ -31,10 +31,7 @@
       "cordova-universal-links-plugin": {},
       "cordova-plugin-browsertab": {},
       "cordova-plugin-customurlscheme": {
-        "URL_SCHEME": "com.delivery.app",
-        "ANDROID_SCHEME": " ",
-        "ANDROID_HOST": " ",
-        "ANDROID_PATHPREFIX": "/"
+        "URL_SCHEME": "com.olxdelivery.app"
       }
     },
     "platforms": [
