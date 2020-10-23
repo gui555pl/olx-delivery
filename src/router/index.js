@@ -98,7 +98,8 @@ const routes = [
         component: EsperaComprador,
         meta: {
           baseText: "Esperando retorno do vendedor",
-          baseIcon: "mdi-timer-sand"
+          baseIcon: "mdi-timer-sand",
+          notShowBack: true
         }
       },
       {
@@ -106,7 +107,7 @@ const routes = [
         name: "Agendamento",
         component: Agendamento,
         meta: {
-          baseText: "Marque seu agendamento",
+          baseText: "Marque um ou mais horários para receber o produto",
           baseIcon: "mdi-clock-outline"
         }
       },

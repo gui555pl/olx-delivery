@@ -1,20 +1,164 @@
 export default [
-    {
-      img: 'https://images.tcdn.com.br/img/img_prod/313499/mouse_gamer_t_dagger_lieutenant_rgb_7_botoes_8000dpi_t_tgm301_9403_1_20200709122258.jpg',
-      preço: 140,
-      descricao:'Mouse gamer rgb',
-      status: 'nao-vendido'
-    },
-    {
-      img: 'https://http2.mlstatic.com/D_NQ_NP_897612-MLB31675315010_082019-W.jpg',
-      preço: 900,
-      descricao:'Caixa de som JBL',
-      status: 'nao-vendido'
-    },
-    {
-      img: 'https://images-na.ssl-images-amazon.com/images/I/41-MkaTuBdL._AC_SY400_.jpg',
-      preço: 430,
-      descricao:'Fone de ouvido',
-      status: 'nao-vendido'
-    }
-  ]
+  {
+    img: "https://images.tcdn.com.br/img/img_prod/313499/mouse_gamer_t_dagger_lieutenant_rgb_7_botoes_8000dpi_t_tgm301_9403_1_20200709122258.jpg",
+    preço: 140,
+    descricao: "Mouse gamer rgb",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://http2.mlstatic.com/D_NQ_NP_897612-MLB31675315010_082019-W.jpg",
+    preço: 900,
+    descricao: "Caixa de som JBL",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://images-na.ssl-images-amazon.com/images/I/41-MkaTuBdL._AC_SY400_.jpg",
+    preço: 430,
+    descricao: "Fone de ouvido",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSUdYSlyaJ2eMgOfF4uju5olGv-GB79MGBNfg&usqp=CAU",
+    preço: 229,
+    descricao: "Câmera fotográfica Panasonic",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSE7NQsxRbvh_ftkL09GYcxJ-OqnA8-1kpAmw&usqp=CAU",
+    preço: 300,
+    descricao: "16gb Memória Acer",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSliHurDXzwiRKev20cNPTY85zTaqIrhhHiIQ&usqp=CAU",
+    preço: 240,
+    descricao: "GPS TomTom GO LIVE 1000",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYQTslCEGYbrL6Rf7gOQ5iMSnRvcsV7MZSGg&usqp=CAU",
+    preço: 416,
+    descricao: "Apple IPhone 3GS",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTuYuajvhK-WJdoQxK1XvVkolPjAZCgKMHEQQ&usqp=CAU",
+    preço: 1100,
+    descricao: "Apple IPhone 5s",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYPWBpwSVkKsV2aKYb0m5om9Dj74mDBED0-g&usqp=CAU",
+    preço: 73,
+    descricao: "GONOKER DZ09 smartwatch",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQrjQWxSOX3vZDzCbE0vg9Lt-dqX7a6pys2pg&usqp=CAU",
+    preço: 1567,
+    descricao: "Máquina de lavar Samsung",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSrdA2WbQ-bUMa1ezxHOScm_hiu0xkKUo08aA&usqp=CAU",
+    preço: 46,
+    descricao: "Samsung Cartão de Memória 16GB",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIzkVWL85K6m4jVP_c6j8aqJK5MvccBZ6SyA&usqp=CAU",
+    preço: 2130,
+    descricao: "HP notebook",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMp6HtltatuoFcHfdIFmU90rRxhJSOOcnJIQ&usqp=CAU",
+    preço: 890,
+    descricao: "HP Monitor 21,5 polegadas",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuODGBrr6Yn-7zpsVIUsozUOdPI-OQEeXbHg&usqp=CAU",
+    preço: 2260,
+    descricao: "Dell Notebook XPS 13",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGqOA3igsR2V3U-IzRDUiOHyLWgmqyrt-VKw&usqp=CAU",
+    preço: 730,
+    descricao: "Dell Gabinete",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4jddbZR9tbHDPTMvdfJUMXlO8uoOVfuDAqg&usqp=CAU",
+    preço: 190,
+    descricao: "Repetiro WI-fi TPLink",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTFDXADEBm_ZZM_P41c0EDuqmgIA5A4m3vfxA&usqp=CAU",
+    preço: 20,
+    descricao: "Capa para Celular Apple IPhone",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQXrQPid_FbTxTP2JzcD4_A2BD88rRTuGPI-Q&usqp=CAU",
+    preço: 170,
+    descricao: "Fone Wireless Philips",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRylfZ0NnCYN6UD5Omml5Zj2JlAdTUkf4pZkQ&usqp=CAU",
+    preço: 42,
+    descricao: "Ferro de passar Philips",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQr-z1ja2zQ8f8BzwALeLi5eGzQY1nYEJxlxQ&usqp=CAU",
+    preço: 99,
+    descricao: "Fone de Ouvido Philips",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRW-UDXqsTssefI8IfanOmAjPGHZh7yJWQkYQ&usqp=CAU",
+    preço: 117,
+    descricao: "Philips Hi-fi fones de ouvido",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQU29LEI5D3XfaUq0Er3XTy73xDzfTnlNa4A&usqp=CAU",
+    preço: 340,
+    descricao: "HD Acer 2TB",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRJNNfHhSOuLF9XYqNwi90kjbjP2d9TJULioQ&usqp=CAU",
+    preço: 43,
+    descricao: "Teclado Acer Aspire",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://cdn.cnetcontent.com/8c/c4/8cc431a0-9a34-4d4e-9cff-72653e351bac.jpg",
+    preço: 93,
+    descricao: "Lenovo Teclado Thinkpad",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSQpDFAZ0RXzt8BG-Xd1zncBI1PM9bMUox7zA&usqp=CAU",
+    preço: 168,
+    descricao: "Mouse Logitech 8200 DPI",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR5HwiiOg4yI_g04cw8JYIdFt229mLd65GBrg&usqp=CAU",
+    preço: 18,
+    descricao: "Suporte para GPS",
+    status: "nao-vendido",
+  },
+  {
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMJEd69l41V6XLqHvY-fbeQI9XGFlFq8heAg&usqp=CAU",
+    preço: 35,
+    descricao: "Carregador Universal para Notebook",
+    status: "nao-vendido",
+  },
+];

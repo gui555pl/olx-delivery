@@ -9,7 +9,7 @@
         div.pa-3(v-ripple) Filtros
     v-row#product-list
       v-col.py-1(v-if='!loading' cols='12' v-for='(produto, i) in produtos' :key='i')
-        ProductCard(:product='produto' style='background: white !important;')
+        ProductCard(v-if='produto.createdAt' :product='produto' style='background: white !important;')
     v-row#product-list
       v-col.py-1(v-if='loading' cols='12' v-for='i in 6' :key='i')  
         v-skeleton-loader(height='93.75px' type="list-item-avatar-three-line")
