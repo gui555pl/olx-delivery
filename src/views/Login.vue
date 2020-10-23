@@ -73,6 +73,7 @@ export default {
         produto.vendedor_email =  this.email
         produto.vendedor_name = this.name,
         produto.endereco = enderecoVendedor
+        produto.active = true
         produto.createdAt = firebase.firestore.FieldValue.serverTimestamp()
         this.$store.commit('setUser', {
         email: this.email,

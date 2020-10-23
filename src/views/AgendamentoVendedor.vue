@@ -50,7 +50,8 @@ export default {
       try {
         this.$fires.produto.update({
           horasCorrespondidas: this.daysMatched,
-          status: 'aguardando_entregador'
+          status: 'aguardando_entregador',
+          active: false
         })
         this.$router.push(`/buying/match/${this.$route.params.id}`)
       } catch (error) {
