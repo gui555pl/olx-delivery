@@ -23,7 +23,10 @@
               img(v-if='item.img' style='height: 19px; margin: auto;' :src='item.img')
               v-icon(v-else :color='$route.path === item.to ? "orange" : "#343a40"' :disabled='isDisabled(item)') {{ item.icon }}
             v-list-item-content
-              v-list-item-title(:style='{ color: $route.path === item.to ? "orange" : "" }') {{ item.name }}
+              v-list-item-title(:style='{ color: $route.path === item.to ? "orange" : "" }')
+                | {{ item.name }}
+                v-avatar.ml-4(v-if='item.badge' color='red' size='24' style='color: white;')
+                  span {{ produtosQtd }}
       v-divider
       v-list.pt-4.pb-0
         v-list-item(v-for='(item, i) in subMenuItems' :key='i' disabled)
@@ -42,9 +45,10 @@ export default {
     return {
       drawer: false,
       user: this.$fiery(firebase.firestore().collection("users").doc(this.$store.getters.user.email)),
+      produtosQtd: 0,
       menuItens: [
         { name: 'Anúncios', img: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/OLX_Brazil_Logo.png', to: '/home/items'},
-        { name: 'Pendências', icon: 'mdi-calendar-clock', to: '/pendenciavendedor' },
+        { name: 'Pendências', badge: true, icon: 'mdi-calendar-clock', to: '/pendenciavendedor' },
         { name: 'Ver Fluxo do Entregador', icon: 'mdi-moped-outline', to: '/proximasentregas' },
         { name: 'Redefinir trajeto diário', icon: 'mdi-map-marker-path', to: '/trajeto' },
         { name: 'Inserir Anúncio', icon: 'mdi-pencil-outline' },
@@ -60,6 +64,13 @@ export default {
     isDisabled (item) {
       return item.name !== 'Pendências' && item.name !== 'Anúncios' && item.name !== 'Sair' && item.name !== 'Ver Fluxo do Entregador' && item.name !== 'Redefinir trajeto diário'
     }
+  },
+  mounted () {
+    this.$fiery(firebase.firestore().collection("produtos").where('status','==','aguardando_vendedor').where('vendedor_email', '==', this.$store.getters.user.email), {
+      onSuccess: (data) => {
+        this.produtosQtd = data.length
+      }
+    })
   }
 };
 </script>
