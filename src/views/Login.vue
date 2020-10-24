@@ -3,7 +3,7 @@ div(style="justify-content:center; text-align:center; height: 100%;")
   v-app-bar(app, color="#6E0AD6", dark)
     v-toolbar-title Entrar
   v-container(style='height: 100%;')
-    v-row.pa-0(no-gutters style='height: 100%;')
+    v-row.pa-0(no-gutters justify='center' style='height: 100%;')
       v-col(cols="12", md="4" align-self='center')
         v-row.pa-0
           v-col.pb-0
