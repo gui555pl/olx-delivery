@@ -2,17 +2,17 @@
     v-container
         v-row#delivery-section.mt-4(no-gutters)
             v-col.section-title.pb-0(cols='12')
-                | Ponto de coleta
+                | Ponto de Coleta
             v-row
                 v-col(cols='auto')
                     v-avatar(color='#6E0AD630' size='36')
                         v-icon(small color='#6E0AD6') mdi-package-variant-closed
                 v-col.pl-0
-                    v-col.section-subtitle.pa-0(cols='12') Rua Dom José Lopes, 955, ap. 204
-                    v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Boa Viagem, Recife - PE
+                    v-col.section-subtitle.pa-0(cols='12') {{ produto.endereco.name.split('-')[0] }}
+                    v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') {{ produto.endereco.name.split('-')[1] + '-' + produto.endereco.name.split('-')[2] }}
         v-row#delivery-section.mt-4(no-gutters)
             v-col.section-title.pb-0(cols='12')
-                | Ponto de entrega
+                | Ponto de Entrega
             v-row
                 v-col(cols='auto')
                     v-avatar(color='#6E0AD630' size='36')
@@ -22,7 +22,7 @@
                     v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Boa Viagem, Recife - PE
         v-row#delivery-section.mt-4(no-gutters)
             v-col.section-title.pb-0(cols='12')
-                | Tempo adicional
+                | Tempo Adicional
             v-row
                 v-col(cols='auto')
                     v-avatar(color='#ffa50030' size='36')
@@ -39,10 +39,8 @@
                 v-col.pl-0(align-self='center')
                     v-col.section-subtitle.pa-0(cols='12' align-self="center" style='font-size: 1.5rem !important; color: #008000') R$ {{precoTrajeto || 12 }}
         v-row#confirm-section(justify="center" align="end" style="margin-top:10%;" no-gutters)
-            v-col(cols='8' )
+            v-col(cols='12')
                 v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="changeStatus()") {{btnText}}
-        
-
 </template>
 
 <script>
