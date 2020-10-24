@@ -14,9 +14,15 @@
 import firebase from 'firebase'
 export default {
   fiery: true,
+  computed: {
+    precoTrajeto(){
+      return parseFloat((this.produto.frete*0.8).toFixed(2))
+    }
+  },
   data () {
     return {
-      produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id))
+      produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id)),
+      user: this.$fiery(firebase.firestore().collection("users").doc(this.$store.getters.user.email)),
     }
   },
   methods: {
@@ -24,6 +30,10 @@ export default {
       try {
         this.$fires.produto.update({
           status: 'entregue'
+        })
+        const novoSaldo= this.user.saldo + this.precoTrajeto
+        this.$fires.user.update({
+          saldo: novoSaldo
         })
         this.$router.push(`/parabens/${this.$route.params.id}`)
       } catch (error) {
