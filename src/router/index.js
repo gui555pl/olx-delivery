@@ -99,7 +99,7 @@ const routes = [
         name: "Info",
         component: Info,
         meta: {
-          baseText: "Informações da entrega",
+          baseText: "Informações da Entrega",
           baseIcon: "mdi-moped-outline"
         }
       },
