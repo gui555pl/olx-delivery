@@ -146,15 +146,15 @@ export default {
       const relation = Math.abs(this.produto.endereco.value - this.user.endereco.value)
       let frete, prazo
       if (relation === 0) {
-        frete = 10
+        frete = 10 + Math.random()
         prazo = 1
       } else {
-        frete = 10.15 + relation
+        frete = 10 + Math.random() + relation
         prazo = relation
       }
-      this.deliveryItems[0].price = relation === 0 ? 10.75 : frete * 1.4
+      this.deliveryItems[0].price = parseFloat((frete * 1.4).toFixed(2))
       this.deliveryItems[0].time = 2
-      this.deliveryItems[1].price = frete
+      this.deliveryItems[1].price = parseFloat(frete.toFixed(2))
       this.deliveryItems[1].time = prazo
     }
   },
