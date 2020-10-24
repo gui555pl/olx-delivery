@@ -5,6 +5,8 @@
                 img(src="../imagens/group-young-people-posing-photo_52683-18823.jpg" height="240px;" )
                 
                 h3(style="font-size:25px; color:#565656#; margin-top:20px; width:70%; ") Seu novo saldo é: R${{ user.saldo.toFixed(2).replace('.', ',') }}
+        v-col(cols='12')
+          v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important' @click="$router.push('/home')") Ok
 
 
 </template>
