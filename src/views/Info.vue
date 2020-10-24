@@ -28,7 +28,7 @@
                     v-avatar(color='#ffa50030' size='36')
                         v-icon(small color='#ffa500') mdi-alarm-plus
                 v-col.pl-0(align-self='center')
-                    div.section-subtitle(cols='12' style='line-height: 20px;') +12 min ao seu trajeto
+                    div.section-subtitle(cols='12' style='line-height: 20px;') +{{simulatePrazo(produto.frete)}} min ao seu trajeto
         v-row#delivery-section.mt-4(no-gutters)
             v-col.section-title.pb-0(cols='12')
                 | Você recebe
@@ -83,6 +83,10 @@ export default {
                 
             }
 
+        },
+        simulatePrazo (frete) {
+            const a = 5, b = -45
+            return Math.floor(a*frete + b)
         }
     },
     async mounted(){
