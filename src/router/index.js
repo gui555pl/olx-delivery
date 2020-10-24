@@ -18,6 +18,7 @@ import Parabens from '@/views/Parabens.vue';
 import ProximasEntregas from '@/views/ProximasEntregas.vue';
 import MinhasProximasEntregas from '@/views/MinhasProximasEntregas.vue';
 import AguardandoEntrega from '@/views/AguardandoEntrega.vue'
+import EntregadorProfile from '@/views/EntregadorProfile.vue'
 
 Vue.use(VueRouter);
 
@@ -32,7 +33,11 @@ const routes = [
     name: "MinhasProximasEntregas",
     component: MinhasProximasEntregas
   },
-
+  {
+    path: "/profile-entregador",
+    name: "Perfil do Entregador",
+    component: EntregadorProfile
+  },
 
   {
     path: "/",
@@ -167,7 +172,7 @@ const routes = [
         components: { default: Home },
       }
     ],
-  },
+  }
 ];
 
 const router = new VueRouter({
