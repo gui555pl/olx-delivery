@@ -25,7 +25,7 @@
             v-list-item-content
               v-list-item-title(:style='{ color: $route.path === item.to ? "orange" : "" }')
                 | {{ item.name }}
-                v-avatar.ml-4(v-if='item.badge' color='red' size='24' style='color: white;')
+                v-avatar.ml-4(v-if='item.badge && produtosQtd !== 0' color='red' size='24' style='color: white;')
                   span {{ produtosQtd }}
       v-divider
       v-list.pt-4.pb-0
