@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-container
+    v-container(style='min-height: calc(100vh - 128px); position: relative;')
         v-row#delivery-section.mt-4(no-gutters)
             v-col.mb-4(cols='12' align-self='center' style='text-align: center;')
                 div.caption(style='display: inline-block;') Essas são as informações detalhadas da sua entrega! Confirme com atenção os&nbsp;
@@ -45,6 +45,9 @@
         v-row#confirm-section.mt-4(justify="center" align="end" no-gutters)
             v-col(cols='12')
                 v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="changeStatus()") {{btnText}}
+        v-fab-transition
+            v-btn(v-show='produto.status !== "aguardando_entregador"' color='blue' dark style='position: fixed; bottom: 20px; right: 12px;' fab)
+                v-icon mdi-chat
 </template>
 
 <script>
