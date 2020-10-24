@@ -4,7 +4,7 @@
             v-row(style="margin-top:15%; justify-content:center;")
                 img(src="../imagens/group-young-people-posing-photo_52683-18823.jpg" height="240px;" )
                 
-                h3(style="font-size:25px; color:#565656#; margin-top:20px; width:70%; ") Seu novo saldo é: R${{user.saldo }}
+                h3(style="font-size:25px; color:#565656#; margin-top:20px; width:70%; ") Seu novo saldo é: R${{ user.saldo.toFixed(2).replace('.', ',') }}
 
 
 </template>
