@@ -49,8 +49,8 @@ export default {
       menuItens: [
         { name: 'Anúncios', img: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/OLX_Brazil_Logo.png', to: '/home/items'},
         { name: 'Pendências', badge: true, icon: 'mdi-calendar-clock', to: '/pendenciavendedor' },
-        { name: 'Ver Fluxo do Entregador', icon: 'mdi-moped-outline', to: '/proximasentregas' },
-        { name: 'Redefinir trajeto diário', icon: 'mdi-map-marker-path', to: '/trajeto' },
+        { name: 'Minhas Entregas', icon: 'mdi-moped-outline', to: '/proximasentregas' },
+        { name: 'Programe um Trajeto Diário', icon: 'mdi-map-marker-path', to: '/trajeto' },
         { name: 'Inserir Anúncio', icon: 'mdi-pencil-outline' },
         { name: 'Notificações', icon: 'mdi-bell-outline' },
         { name: 'Chat', icon: 'mdi-chat-outline' },
@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     isDisabled (item) {
-      return item.name !== 'Pendências' && item.name !== 'Anúncios' && item.name !== 'Sair' && item.name !== 'Ver Fluxo do Entregador' && item.name !== 'Redefinir trajeto diário'
+      return item.name !== 'Pendências' && item.name !== 'Anúncios' && item.name !== 'Sair' && item.name !== 'Minhas Entregas' && item.name !== 'Programe um Trajeto Diário'
     }
   },
   mounted () {
