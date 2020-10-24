@@ -1,7 +1,6 @@
 <template lang='pug'>
     div
       v-col(style="text-align:center; " )
-        v-row#product-list( )
         h3(style="margin-top:20px;") Entregas pendentes 
         v-list.overflow-y-auto(style="max-height: 230px;")
           v-col.py-1(cols='12' v-for='(produto, i) in produtosNovos' :key='i')
@@ -19,7 +18,6 @@
 
               
       v-col(style="text-align:center; " )
-        v-row#product-list( )
         h3 Entregas em andamento 
           v-list.overflow-y-auto(style="max-height: 250px;")
             v-col.py-1(cols='12' v-for='(produto, i) in produtosAndamento' :key='i')
