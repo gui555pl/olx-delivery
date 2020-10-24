@@ -69,6 +69,7 @@ export default {
                 this.$fires.produto.update({
                     status: 'aguardando_entrega'
                 })
+                this.$router.push('/aguardando-entrega/'+this.$route.params.id)
             }
             else{
                 var aux = null;
