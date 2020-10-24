@@ -10,11 +10,11 @@
                   v-col(cols='auto')
                     v-avatar(color='#00800030' size='48')
                       v-icon(color='#008000') mdi-cash-multiple
-                  p(style="font-weight: 400px; color:green; margin-top:20px;")  R$15.52
+                  p(style="font-weight: 400px; color:green; margin-top:20px;")  R${{Math.floor(produto.frete*0.8)}},15
                   v-col(cols='auto')
                     v-avatar(color='#00800030' size='48')
                       v-icon(color='orange') mdi-timer-sand
-                  p(style="font-weight: 400px; color:orange;margin-top:20px;")  15 min
+                  p(style="font-weight: 400px; color:orange;margin-top:20px;")  {{getRandomInt(5,30)}} min
                     
 
               
@@ -28,11 +28,11 @@
                   v-col(cols='auto')
                     v-avatar(color='#00800030' size='48')
                       v-icon(color='#008000') mdi-cash-multiple
-                  p(style="font-weight: 400px; color:green; margin-top:20px;")  R$15.52
+                  p(style="font-weight: 400px; color:green; margin-top:20px;")  R${{produto.frete*0.8}}
                   v-col(cols='auto')
                     v-avatar(color='#00800030' size='48')
                       v-icon(color='orange') mdi-timer-sand
-                  p(style="font-weight: 400px; color:orange;margin-top:20px;")  15 min
+                  p(style="font-weight: 400px; color:orange;margin-top:20px;")  {{getRandomInt(5,30)}} min
 
 </template>
 
@@ -45,6 +45,7 @@ export default {
       return{
         produtosNovos: this.$fiery(firebase.firestore().collection("produtos").where("status","==","aguardando_entregador")),//n sei a lógica desses n 
         produtosAndamento: this.$fiery(firebase.firestore().collection("produtos").where("entregador_email","==",this.$store.getters.user.email)),
+
       }
   },
   components:{
@@ -55,12 +56,15 @@ export default {
       let id = produto[".uid"].split("/")[4];
       console.log(id)
       this.$router.push('/info/'+ id )
+    },
+    getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
   },
   created(){
 
-  }
+  },
 };
 </script>
 

@@ -16,6 +16,7 @@ import MatchHoursDone from '@/views/MatchHoursDone'
 import Info from '@/views/Info.vue';
 import Parabens from '@/views/Parabens.vue';
 import ProximasEntregas from '@/views/ProximasEntregas.vue';
+import MinhasProximasEntregas from '@/views/MinhasProximasEntregas.vue';
 import AguardandoEntrega from '@/views/AguardandoEntrega.vue'
 
 Vue.use(VueRouter);
@@ -25,6 +26,11 @@ const routes = [
     path: "/fluxo",
     name: "Início",
     component: Fluxo
+  },
+  {
+    path: "/minhasproximasentregas",
+    name: "MinhasProximasEntregas",
+    component: MinhasProximasEntregas
   },
 
 

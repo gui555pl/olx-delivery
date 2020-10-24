@@ -87,7 +87,9 @@ export default {
             },
             horarioIda: this.horarioIda,
             horarioVolta:this.horarioVolta
+
         })
+        this.$router.push('/home')
 
     }
   },

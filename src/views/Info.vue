@@ -37,7 +37,7 @@
                     v-avatar(color='#00800030' size='48')
                         v-icon(color='#008000') mdi-cash-multiple
                 v-col.pl-0(align-self='center')
-                    v-col.section-subtitle.pa-0(cols='12' align-self="center" style='font-size: 1.5rem !important; color: #008000') R$ 15,52
+                    v-col.section-subtitle.pa-0(cols='12' align-self="center" style='font-size: 1.5rem !important; color: #008000') R$ {{precoTrajeto || 12 }}
         v-row#confirm-section(justify="center" align="end" style="margin-top:10%;" no-gutters)
             v-col(cols='8' )
                 v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="changeStatus()") {{btnText}}
@@ -54,7 +54,6 @@ export default {
             produto: this.$fiery(firebase.firestore().collection("produtos").doc(this.$route.params.id)),
             btnText:"Carregando status...",
             user: this.$fiery(firebase.firestore().collection("users").doc(this.$store.getters.user.email)),
-            precoTrajeto:15.52
         }
     },
     methods: {
@@ -70,11 +69,20 @@ export default {
                 })
             }
             else{
-              this.precoTrajeto= this.user.saldo + this.precoTrajeto
-                this.$fires.user.update({
-                    saldo: this.precoTrajeto
-                })
-                this.$router.push('/parabens/'+this.$route.params.id)
+                var aux = null;
+                
+                if(this.precoTrajeto){
+                    aux = this.precoTrajeto
+                }
+                else{
+                    aux= 12
+                }
+                    var novoSaldo= this.user.saldo + aux
+                    this.$fires.user.update({
+                        saldo: novoSaldo
+                    })
+                    this.$router.push('/parabens/'+this.$route.params.id)
+                
             }
 
         }
@@ -93,6 +101,9 @@ export default {
       })
     },
     computed: {
+        precoTrajeto(){
+            return this.produto.frete*0.8
+        }
     },
     created(){
     }

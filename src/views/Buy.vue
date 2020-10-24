@@ -135,7 +135,8 @@ export default {
   methods:{
     comprar(){
       this.$fires.produto.update({
-        status:'aguardando_vendedor'
+        status:'aguardando_vendedor',
+        frete: this.delivery.price,
       })
       this.$router.push('/buying/agendamento/'+ this.$route.params.id);
     },
@@ -145,7 +146,7 @@ export default {
       const relation = Math.abs(this.produto.endereco.value - this.user.endereco.value)
       let frete, prazo
       if (relation === 0) {
-        frete = 5.40
+        frete = 10
         prazo = 1
       } else {
         frete = 10.15 + relation
