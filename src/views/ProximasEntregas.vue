@@ -3,18 +3,18 @@
       v-col(style="text-align:center; " )
         v-row#product-list( )
         h3(style="margin-top:20px;") Entregas pendentes 
-          v-list.overflow-y-auto(style="max-height: 230px;")
-            v-col.py-1(cols='12' v-for='(produto, i) in produtosNovos' :key='i')
-              v-card(@click="toInfo(produto)")
-                v-row
-                  v-col(cols='auto')
-                    v-avatar(color='#00800030' size='48')
-                      v-icon(color='#008000') mdi-cash-multiple
-                  p(style="font-weight: 400px; color:green; margin-top:20px;")  R${{Math.floor(produto.frete*0.8)}},15
-                  v-col(cols='auto')
-                    v-avatar(color='#00800030' size='48')
-                      v-icon(color='orange') mdi-timer-sand
-                  p(style="font-weight: 400px; color:orange;margin-top:20px;")  {{getRandomInt(5,30)}} min
+        v-list.overflow-y-auto(style="max-height: 230px;")
+          v-col.py-1(cols='12' v-for='(produto, i) in produtosNovos' :key='i')
+            v-card(@click="toInfo(produto)")
+              v-row.pa-0(justify='space-around' style='width: 100%;')
+                v-col(cols='auto')
+                  v-avatar(color='#00800030' size='48')
+                    v-icon(color='#008000') mdi-cash-multiple
+                  p(style="display: inline; font-weight: 400px; color:green; margin-top:20px;")  R${{Math.floor(produto.frete*0.8)}},15
+                v-col(cols='auto')
+                  v-avatar(color='#ffa50030' size='48')
+                    v-icon(color='orange') mdi-timer-sand
+                  p(style="display: inline; font-weight: 400px; color:orange;margin-top:20px;")  {{getRandomInt(5,30)}} min
                     
 
               
