@@ -10,14 +10,14 @@ v-card(style='box-shadow: 1px 1px 1px rgba(0,0,0,0.10); background:#fffffe;' v-r
         v-col(cols="12")
           v-row(no-gutters)
             v-col.body-2.font-weight-medium(align-self='center') R${{ product.preço }}
-            v-col.pa-0
-              img(height='20' src='../imagens/olxpay.jpeg')
-              img(height='20' src='../imagens/entrega.jpeg')
+            v-col.pt-0.pr-4.pb-0.pl-0
+              img(height='20' style='float: right' src='../imagens/olxpay.jpeg')
+              img(height='20' style='float: right' src='../imagens/entrega.jpeg')
         v-col(cols="12")
           span.grey--text.body-2.font-weight-light.pa-0(
             style="font-size: 0.7rem !important;"
           ) {{ product.createdAt.toDate().getDate() + ' de ' + months[product.createdAt.toDate().getMonth()] }}, {{ product.endereco.name.split('-')[1].split(',')[0] }}
-          v-chip.ml-3(v-if='isOwner' color='green' x-small dark) Seu produto
+          v-chip.mt-1.mr-4(v-if='isOwner' color='green' style='float: right' x-small dark) Seu produto
 </template>
 
 <script>
