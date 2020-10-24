@@ -13,7 +13,7 @@
                 v-col(cols='auto')
                   v-avatar(color='#00800030' size='48')
                     v-icon(color='#008000') mdi-cash-multiple
-                  p(style="display: inline; font-weight: 400px; color:green; margin-top:20px;")  R${{parseFloat((produto.frete*0.8).toFixed(2))}}
+                  p(style="display: inline; font-weight: 400px; color:green; margin-top:20px;")  R${{(produto.frete*0.8).toFixed(2).replace('.', ',')}}
                 v-col(cols='auto')
                   v-avatar(color='#ffa50030' size='48')
                     v-icon(color='orange') mdi-timer-sand
@@ -30,11 +30,11 @@
                   v-col(cols='auto')
                     v-avatar(color='#00800030' size='48')
                       v-icon(color='#008000') mdi-cash-multiple
-                  p(style="font-weight: 400px; color:green; margin-top:20px;")  R${{produto.frete*0.8}}
+                  p(style="font-weight: 400px; color:green; margin-top:20px;") R${{(produto.frete*0.8).toFixed(2).replace('.', ',')}}
                   v-col(cols='auto')
                     v-avatar(color='#00800030' size='48')
                       v-icon(color='orange') mdi-timer-sand
-                  p(style="font-weight: 400px; color:orange;margin-top:20px;")  {{getRandomInt(5,30)}} min
+                  p(style="font-weight: 400px; color:orange;margin-top:20px;") {{simulatePrazo(produto.frete)}} min
 
 </template>
 
