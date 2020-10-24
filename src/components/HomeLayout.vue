@@ -9,7 +9,7 @@
         v-icon mdi-heart-outline
     v-navigation-drawer(v-model='drawer' absolute temporary)
       v-list.py-0(color='#6E0AD6' dark)
-        v-list-item(two-line)
+        v-list-item(@click='$router.push("/profile-entregador")' two-line)
           v-list-item-avatar
             v-avatar(color='transparent')
               v-icon(color='white') mdi-account-outline
