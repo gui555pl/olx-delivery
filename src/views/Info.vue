@@ -1,6 +1,9 @@
 <template lang="pug">
     v-container
         v-row#delivery-section.mt-4(no-gutters)
+            v-col.mb-4(cols='12' align-self='center' style='text-align: center;')
+                div.caption(style='display: inline-block;') Essas são as informações detalhadas da sua entrega! Confirme com atenção os&nbsp;
+                    span(style='color: #6E0AD6') endereços de coleta e de entrega. &nbsp;
             v-col.section-title.pb-0(cols='12')
                 | Ponto de Coleta
             v-row
@@ -20,7 +23,7 @@
                 v-col.pl-0
                     v-col.section-subtitle.pa-0(cols='12') Rua Tenente Domingos de Brito, 393
                     v-col.grey--text.body-2.font-weight-light.pa-0(cols='12' style='font-size: 0.7rem !important; line-height: 1.5;') Boa Viagem, Recife - PE
-        v-row#delivery-section.mt-4(no-gutters)
+        v-row#delivery-section.mt-4.mb-2(no-gutters)
             v-col.section-title.pb-0(cols='12')
                 | Tempo Adicional
             v-row
@@ -29,16 +32,17 @@
                         v-icon(small color='#ffa500') mdi-alarm-plus
                 v-col.pl-0(align-self='center')
                     div.section-subtitle(cols='12' style='line-height: 20px;') +{{simulatePrazo(produto.frete)}} min ao seu trajeto
+        v-divider
         v-row#delivery-section.mt-4(no-gutters)
             v-col.section-title.pb-0(cols='12')
-                | Você recebe
+                h2(style='font-weight: 500;') Você recebe
             v-row
                 v-col(cols='auto')
                     v-avatar(color='#00800030' size='48')
                         v-icon(color='#008000') mdi-cash-multiple
                 v-col.pl-0(align-self='center')
                     v-col.section-subtitle.pa-0(cols='12' align-self="center" style='font-size: 1.5rem !important; color: #008000') R$ {{precoTrajeto.toString().replace('.', ',') }}
-        v-row#confirm-section(justify="center" align="end" style="margin-top:10%;" no-gutters)
+        v-row#confirm-section.mt-4(justify="center" align="end" no-gutters)
             v-col(cols='12')
                 v-btn(color='#ffa500' dark large block depressed rounded style='text-transform: none !important ' @click="changeStatus()") {{btnText}}
 </template>
